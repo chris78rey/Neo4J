@@ -1,0 +1,257 @@
+{
+  "requerimientos/00_contexto_general.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "c076faceae3d34be4fa3bdd1c3c2e1cb",
+    "semantic_hash": ""
+  },
+  "requerimientos/01_alcance_inicial.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "6cc5fb5f5921243fced97f3caec6f642",
+    "semantic_hash": ""
+  },
+  "requerimientos/01_contexto_inicial.md": {
+    "mtime": 1781704193.5423117,
+    "ast_hash": "e4eb2133b05d9de3e3a14ed2b5167b01",
+    "semantic_hash": ""
+  },
+  "requerimientos/02_alcance_y_arquitectura.md": {
+    "mtime": 1781704193.5423117,
+    "ast_hash": "782f4a7153fdf544d2d82189bf4f7335",
+    "semantic_hash": ""
+  },
+  "requerimientos/02_objetivo_graphrag.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "7f50954d7b81ab4606e868601e26302b",
+    "semantic_hash": ""
+  },
+  "requerimientos/03_documentos_iniciales.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "62924b9aa0db888b54cdf3bebe20dd06",
+    "semantic_hash": ""
+  },
+  "requerimientos/03_flujo_y_modelo.md": {
+    "mtime": 1781704193.5433116,
+    "ast_hash": "9ee02fe0561e2ac36bc25b863846ed12",
+    "semantic_hash": ""
+  },
+  "requerimientos/04_arquitectura_inicial.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "9af925469620b7ae93d39040f957b2b3",
+    "semantic_hash": ""
+  },
+  "requerimientos/04_modelos_y_costos.md": {
+    "mtime": 1781704193.5433116,
+    "ast_hash": "446d6a7008abf0ca6aa6c3712cda57f6",
+    "semantic_hash": ""
+  },
+  "requerimientos/05_consumo_recursos.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "d5ac1387852acef7a78eda11662103a5",
+    "semantic_hash": ""
+  },
+  "requerimientos/06_flujo_procesamiento.md": {
+    "mtime": 1781704256.8943624,
+    "ast_hash": "476dcaf8a874e78e2a0b531aa3add7cf",
+    "semantic_hash": ""
+  },
+  "requerimientos/07_modelo_grafo.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "1a27e50081622d992b7004cd7859e8e8",
+    "semantic_hash": ""
+  },
+  "requerimientos/08_uso_llm_externo.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "9d0456623a2e2c170cab332b355745bd",
+    "semantic_hash": ""
+  },
+  "requerimientos/09_modelo_llm.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "df4981bf0f0154cb67d778924c9a8d08",
+    "semantic_hash": ""
+  },
+  "requerimientos/10_modelo_embeddings.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "245bff1d94dbcbe24efbc7616ea0796e",
+    "semantic_hash": ""
+  },
+  "requerimientos/11_control_costos_ia.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "e25913245becd0f992f6411bb0d35c3f",
+    "semantic_hash": ""
+  },
+  "requerimientos/12_estrategia_modelos.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "5afa8008edcd05534c4d56b8878d4972",
+    "semantic_hash": ""
+  },
+  "requerimientos/README.md": {
+    "mtime": 1781704256.8953624,
+    "ast_hash": "f70cba51cda9448a9ecd72b7f322662e",
+    "semantic_hash": ""
+  },
+  "requerimientos/prtpreguntas.md": {
+    "mtime": 1781704048.0341349,
+    "ast_hash": "24fc8f88fa127b0915d812ea886cf270",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/__init__.py": {
+    "mtime": 1781706121.8969953,
+    "ast_hash": "952dce6677558d51e4cd7fb43abe374d",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/cli.py": {
+    "mtime": 1781708382.6304607,
+    "ast_hash": "4bf4d5cf0b108b01aba9d8503c876b9e",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/config.py": {
+    "mtime": 1781710557.5242016,
+    "ast_hash": "9fb5e98c88e9a867f081ed490de0ef17",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/ingest.py": {
+    "mtime": 1781706121.8979952,
+    "ast_hash": "4e4fb1761a1ac7b75a4da2f5af37ec6a",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/models.py": {
+    "mtime": 1781709753.5963616,
+    "ast_hash": "07001c5c126599d15ba60a384e9c8ec3",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/store.py": {
+    "mtime": 1781710869.5434132,
+    "ast_hash": "a80a905177507a5aa058c99f2cc5b485",
+    "semantic_hash": ""
+  },
+  "tests/test_ingest.py": {
+    "mtime": 1781706121.8979952,
+    "ast_hash": "a4ec6630cdae95341f1c7e48ce92f1d3",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1781708355.2604637,
+    "ast_hash": "d2a2584b6d3d51b81d87f8d52a82171c",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/connectors.py": {
+    "mtime": 1781706374.5428987,
+    "ast_hash": "068c195e5824da1baa0fb2d7d1673b24",
+    "semantic_hash": ""
+  },
+  "tests/test_pipeline.py": {
+    "mtime": 1781706385.0048943,
+    "ast_hash": "0c53e499898fb7e019c9eaa039ce398f",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/embeddings.py": {
+    "mtime": 1781708276.3494706,
+    "ast_hash": "c7b19fd6f34fac31be924758cf6fce84",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/retrieval.py": {
+    "mtime": 1781712732.2333422,
+    "ast_hash": "a25b1142f7ceab5bb65f3450b226fd4e",
+    "semantic_hash": ""
+  },
+  "tests/test_retrieval.py": {
+    "mtime": 1781712742.2333472,
+    "ast_hash": "47978ed9f509c4e8ff795fb6180c141c",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/extract.py": {
+    "mtime": 1781709756.7843666,
+    "ast_hash": "97909e091e807345e85bafc159e2dcc6",
+    "semantic_hash": ""
+  },
+  "tests/test_extract.py": {
+    "mtime": 1781706507.014838,
+    "ast_hash": "f146f7b0e999fc50c4a7327cb015295d",
+    "semantic_hash": ""
+  },
+  "tests/test_doctor.py": {
+    "mtime": 1781706597.9957933,
+    "ast_hash": "5687de3f4be9cc83b0c724451798bd07",
+    "semantic_hash": ""
+  },
+  "tests/test_healthcheck.py": {
+    "mtime": 1781706661.1547613,
+    "ast_hash": "8d32e8ad2a03729ee672e47082e386cc",
+    "semantic_hash": ""
+  },
+  "tests/test_probe.py": {
+    "mtime": 1781706719.7027307,
+    "ast_hash": "f0ae29221d60eed78d45e9e0eb6d1973",
+    "semantic_hash": ""
+  },
+  "requerimientos/13_plan_interfaz_web.md": {
+    "mtime": 1781707255.532067,
+    "ast_hash": "ec9f237b17c46a9006fb80c0550d70dd",
+    "semantic_hash": ""
+  },
+  "requerimientos/14_arquitectura_interfaz_web.md": {
+    "mtime": 1781707327.7091525,
+    "ast_hash": "fc5eb62845eb90949f875745c9137bbc",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/api.py": {
+    "mtime": 1781717157.4703515,
+    "ast_hash": "0e7cf259dd325ada8568f9bf3b007b61",
+    "semantic_hash": ""
+  },
+  "tests/test_api.py": {
+    "mtime": 1781708630.7924235,
+    "ast_hash": "75a2ef2221d11374a0e39f50228f8861",
+    "semantic_hash": ""
+  },
+  "tests/test_index.py": {
+    "mtime": 1781708769.7063966,
+    "ast_hash": "9a1c9614523d70dfb9bee58c1589a682",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/job_store.py": {
+    "mtime": 1781707964.1234682,
+    "ast_hash": "7032d90d035de92f4729db7d12c1cc4b",
+    "semantic_hash": ""
+  },
+  "tests/test_job_store.py": {
+    "mtime": 1781707791.0854368,
+    "ast_hash": "8fdfec0af218ab645a89f9afd0f0fab0",
+    "semantic_hash": ""
+  },
+  "frontend/package.json": {
+    "mtime": 1781709962.105649,
+    "ast_hash": "537369a8df12e3fe721416c1ba3d4774",
+    "semantic_hash": ""
+  },
+  "frontend/src/App.tsx": {
+    "mtime": 1781713601.2432504,
+    "ast_hash": "064b3e37ea6df742598775bc8ef0217e",
+    "semantic_hash": ""
+  },
+  "frontend/src/main.tsx": {
+    "mtime": 1781710025.5387232,
+    "ast_hash": "75a48f4667f5af9910897e0db18eab9c",
+    "semantic_hash": ""
+  },
+  "frontend/tsconfig.json": {
+    "mtime": 1781708106.5654764,
+    "ast_hash": "9768fdbdf19cd020086abf5fd06f615d",
+    "semantic_hash": ""
+  },
+  "frontend/vite.config.ts": {
+    "mtime": 1781708106.5644763,
+    "ast_hash": "65fe9034f9200bc8d10eec06205b7482",
+    "semantic_hash": ""
+  },
+  "frontend/index.html": {
+    "mtime": 1781708106.5654764,
+    "ast_hash": "ad32c5c7f024261ae53e8a7dc17d23b4",
+    "semantic_hash": ""
+  },
+  "src/neo4j_graphrag/openrouter.py": {
+    "mtime": 1781708264.9794714,
+    "ast_hash": "1ecc63607a5a0e6e980ec6b974043c65",
+    "semantic_hash": ""
+  }
+}
