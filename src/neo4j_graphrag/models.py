@@ -7,6 +7,7 @@ class Document:
     path: str
     title: str
     text: str
+    metadata: dict = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -32,3 +33,4 @@ class Relation:
     target_id: str
     relation_type: str
     confidence: float = 1.0
+    document_id: str | None = None

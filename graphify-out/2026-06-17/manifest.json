@@ -110,18 +110,18 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/ingest.py": {
-    "mtime": 1781706121.8979952,
-    "ast_hash": "4e4fb1761a1ac7b75a4da2f5af37ec6a",
+    "mtime": 1781721703.906965,
+    "ast_hash": "5aaaf43274f7f239d63c86ed4922a8b9",
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/models.py": {
-    "mtime": 1781709753.5963616,
-    "ast_hash": "07001c5c126599d15ba60a384e9c8ec3",
+    "mtime": 1781731463.10418,
+    "ast_hash": "dc49701e25d88d0d6f204cfcb50483e5",
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/store.py": {
-    "mtime": 1781710869.5434132,
-    "ast_hash": "a80a905177507a5aa058c99f2cc5b485",
+    "mtime": 1781731472.113186,
+    "ast_hash": "ef926fcd6258a96bd9f74c90d96fcf28",
     "semantic_hash": ""
   },
   "tests/test_ingest.py": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/connectors.py": {
-    "mtime": 1781706374.5428987,
-    "ast_hash": "068c195e5824da1baa0fb2d7d1673b24",
+    "mtime": 1781731466.064182,
+    "ast_hash": "8b16e6da7ca045d64cb8c60068d646bb",
     "semantic_hash": ""
   },
   "tests/test_pipeline.py": {
@@ -150,23 +150,23 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/retrieval.py": {
-    "mtime": 1781710654.2422705,
-    "ast_hash": "0d6b1dca3a0c11c5b92ae7993b23e058",
+    "mtime": 1781731478.77519,
+    "ast_hash": "3a0763cf872230140d7cb380cc593e1e",
     "semantic_hash": ""
   },
   "tests/test_retrieval.py": {
-    "mtime": 1781706507.014838,
-    "ast_hash": "0abb586fa716a6846c51c65360d27514",
+    "mtime": 1781730960.6397436,
+    "ast_hash": "58ae04898b259da6b3faab85a8e31d1c",
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/extract.py": {
-    "mtime": 1781709756.7843666,
-    "ast_hash": "97909e091e807345e85bafc159e2dcc6",
+    "mtime": 1781723804.20306,
+    "ast_hash": "5ceff45d1d27461d3ac3d9df584e44a7",
     "semantic_hash": ""
   },
   "tests/test_extract.py": {
-    "mtime": 1781706507.014838,
-    "ast_hash": "f146f7b0e999fc50c4a7327cb015295d",
+    "mtime": 1781723822.4520824,
+    "ast_hash": "b0e3070f807b7802257899055912a9bd",
     "semantic_hash": ""
   },
   "tests/test_doctor.py": {
@@ -195,13 +195,13 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/api.py": {
-    "mtime": 1781712289.18612,
-    "ast_hash": "9944723c794c92fd8f8699b7ac10e6e4",
+    "mtime": 1781731484.4061937,
+    "ast_hash": "ca63dc9855e76b0fad3cf76bd8506306",
     "semantic_hash": ""
   },
   "tests/test_api.py": {
-    "mtime": 1781708630.7924235,
-    "ast_hash": "75a2ef2221d11374a0e39f50228f8861",
+    "mtime": 1781731201.9459867,
+    "ast_hash": "913e274c3a81bc0c34617de47696727e",
     "semantic_hash": ""
   },
   "tests/test_index.py": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "frontend/src/App.tsx": {
-    "mtime": 1781712469.4692101,
-    "ast_hash": "0a4a1b0a14cd4923d0de0f0ec1d3d792",
+    "mtime": 1781731493.3261993,
+    "ast_hash": "28b772130deab104c4c7b9a5ccbc5ef8",
     "semantic_hash": ""
   },
   "frontend/src/main.tsx": {
@@ -252,6 +252,21 @@
   "src/neo4j_graphrag/openrouter.py": {
     "mtime": 1781708264.9794714,
     "ast_hash": "1ecc63607a5a0e6e980ec6b974043c65",
+    "semantic_hash": ""
+  },
+  "scripts/refresh_graphify.sh": {
+    "mtime": 1781721366.5118861,
+    "ast_hash": "a755ed16b59de6d943bf353953ba5f21",
+    "semantic_hash": ""
+  },
+  "scripts/stage_graphify.sh": {
+    "mtime": 1781721432.3309016,
+    "ast_hash": "a8ddbadc6d06170c12a36a08d75fb60d",
+    "semantic_hash": ""
+  },
+  "docs/plan_grafos_embeddings.md": {
+    "mtime": 1781731497.4112017,
+    "ast_hash": "271d04639987b555f4dbcd98f1bdde85",
     "semantic_hash": ""
   }
 }

@@ -227,7 +227,7 @@
       "label": "requestJSON()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L9",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "src_app_requestjson",
       "community": 31,
@@ -237,7 +237,7 @@
       "label": "AppContext",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L18",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "src_app_appcontext",
       "community": 31,
@@ -247,7 +247,7 @@
       "label": "Shell()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L56",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "src_app_shell",
       "community": 31,
@@ -257,7 +257,7 @@
       "label": "OverviewPage()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L94",
+      "source_location": "L104",
       "_origin": "ast",
       "id": "src_app_overviewpage",
       "community": 31,
@@ -267,7 +267,7 @@
       "label": "IngestPage()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L116",
+      "source_location": "L126",
       "_origin": "ast",
       "id": "src_app_ingestpage",
       "community": 31,
@@ -277,7 +277,7 @@
       "label": "AskPage()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L143",
+      "source_location": "L157",
       "_origin": "ast",
       "id": "src_app_askpage",
       "community": 31,
@@ -287,7 +287,7 @@
       "label": "DocumentsPage()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L197",
+      "source_location": "L271",
       "_origin": "ast",
       "id": "src_app_documentspage",
       "community": 31,
@@ -297,7 +297,7 @@
       "label": "JobsPage()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L240",
+      "source_location": "L315",
       "_origin": "ast",
       "id": "src_app_jobspage",
       "community": 31,
@@ -307,7 +307,7 @@
       "label": "RoutedApp()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L284",
+      "source_location": "L359",
       "_origin": "ast",
       "id": "src_app_routedapp",
       "community": 31,
@@ -317,7 +317,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "frontend/src/App.tsx",
-      "source_location": "L481",
+      "source_location": "L567",
       "_origin": "ast",
       "id": "src_app_app",
       "community": 31,
@@ -534,6 +534,62 @@
       "norm_label": "vite.config.ts"
     },
     {
+      "label": "refresh_graphify.sh",
+      "file_type": "code",
+      "source_file": "scripts/refresh_graphify.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_refresh_graphify",
+      "community": 36,
+      "norm_label": "refresh_graphify.sh"
+    },
+    {
+      "label": "refresh_graphify.sh script",
+      "file_type": "code",
+      "source_file": "scripts/refresh_graphify.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "home_crrb_codex_projects_neo4j_scripts_refresh_graphify_sh__entry",
+      "community": 36,
+      "norm_label": "refresh_graphify.sh script"
+    },
+    {
+      "label": "stage_graphify.sh",
+      "file_type": "code",
+      "source_file": "scripts/stage_graphify.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_stage_graphify",
+      "community": 37,
+      "norm_label": "stage_graphify.sh"
+    },
+    {
+      "label": "stage_graphify.sh script",
+      "file_type": "code",
+      "source_file": "scripts/stage_graphify.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "home_crrb_codex_projects_neo4j_scripts_stage_graphify_sh__entry",
+      "community": 37,
+      "norm_label": "stage_graphify.sh script"
+    },
+    {
       "label": "__init__.py",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/__init__.py",
@@ -567,7 +623,7 @@
       "label": "update_job()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L30",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_update_job",
       "community": 21,
@@ -577,17 +633,27 @@
       "label": "normalize_document_id()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L34",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_normalize_document_id",
       "community": 21,
       "norm_label": "normalize_document_id()"
     },
     {
+      "label": "current_ingest_timestamp()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_api_current_ingest_timestamp",
+      "community": 21,
+      "norm_label": "current_ingest_timestamp()"
+    },
+    {
       "label": "QuestionRequest",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L38",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_questionrequest",
       "community": 21,
@@ -607,7 +673,7 @@
       "label": "IngestResponse",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L45",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_ingestresponse",
       "community": 21,
@@ -617,7 +683,7 @@
       "label": "AskResponse",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L53",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_askresponse",
       "community": 21,
@@ -627,7 +693,7 @@
       "label": "JobResponse",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L59",
+      "source_location": "L74",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_jobresponse",
       "community": 21,
@@ -637,7 +703,7 @@
       "label": "DocumentResponse",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L65",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_documentresponse",
       "community": 21,
@@ -647,17 +713,37 @@
       "label": "DeleteResponse",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L75",
+      "source_location": "L95",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_deleteresponse",
       "community": 21,
       "norm_label": "deleteresponse"
     },
     {
+      "label": "sort_documents_by_ingest()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_api_sort_documents_by_ingest",
+      "community": 21,
+      "norm_label": "sort_documents_by_ingest()"
+    },
+    {
+      "label": "documents_metadata_by_id()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_api_documents_metadata_by_id",
+      "community": 21,
+      "norm_label": "documents_metadata_by_id()"
+    },
+    {
       "label": "health()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L81",
+      "source_location": "L118",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_health",
       "community": 21,
@@ -667,7 +753,7 @@
       "label": "upload_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L99",
+      "source_location": "L136",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_upload_document",
       "community": 21,
@@ -677,7 +763,7 @@
       "label": "BackgroundTasks",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L99",
+      "source_location": "L136",
       "_origin": "ast",
       "id": "backgroundtasks",
       "community": 21,
@@ -687,7 +773,7 @@
       "label": "UploadFile",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L99",
+      "source_location": "L136",
       "_origin": "ast",
       "id": "uploadfile",
       "community": 21,
@@ -697,7 +783,7 @@
       "label": "list_documents()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L173",
+      "source_location": "L225",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_list_documents",
       "community": 21,
@@ -707,7 +793,7 @@
       "label": "get_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L179",
+      "source_location": "L231",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_get_document",
       "community": 21,
@@ -717,7 +803,7 @@
       "label": "delete_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L197",
+      "source_location": "L254",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_delete_document",
       "community": 21,
@@ -727,7 +813,7 @@
       "label": "ask_question()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L220",
+      "source_location": "L277",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_ask_question",
       "community": 21,
@@ -737,7 +823,7 @@
       "label": "get_job()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L275",
+      "source_location": "L370",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_get_job",
       "community": 21,
@@ -747,7 +833,7 @@
       "label": "list_jobs()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/api.py",
-      "source_location": "L284",
+      "source_location": "L379",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_list_jobs",
       "community": 21,
@@ -760,7 +846,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli",
-      "community": 34,
+      "community": 21,
       "norm_label": "cli.py"
     },
     {
@@ -770,7 +856,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_cmd_ingest",
-      "community": 34,
+      "community": 21,
       "norm_label": "cmd_ingest()"
     },
     {
@@ -780,7 +866,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "namespace",
-      "community": 34,
+      "community": 21,
       "norm_label": "namespace"
     },
     {
@@ -790,7 +876,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_cmd_ask",
-      "community": 34,
+      "community": 21,
       "norm_label": "cmd_ask()"
     },
     {
@@ -957,7 +1043,7 @@
       "label": "ingest_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/connectors.py",
-      "source_location": "L37",
+      "source_location": "L53",
       "_origin": "ast",
       "id": "neo4j_graphrag_connectors_ingest_document",
       "community": 1,
@@ -1007,7 +1093,7 @@
       "label": "extract_entities()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/extract.py",
-      "source_location": "L25",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "neo4j_graphrag_extract_extract_entities",
       "community": 1,
@@ -1017,7 +1103,7 @@
       "label": "Chunk",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/extract.py",
-      "source_location": "L25",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_extract_py_chunk",
       "community": 1,
@@ -1027,7 +1113,7 @@
       "label": "Entity",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/extract.py",
-      "source_location": "L25",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_extract_py_entity",
       "community": 1,
@@ -1037,7 +1123,7 @@
       "label": "extract_relations()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/extract.py",
-      "source_location": "L41",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "neo4j_graphrag_extract_extract_relations",
       "community": 1,
@@ -1047,11 +1133,51 @@
       "label": "Relation",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/extract.py",
-      "source_location": "L41",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_extract_py_relation",
       "community": 1,
       "norm_label": "relation"
+    },
+    {
+      "label": "extract_signatures()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_extract_extract_signatures",
+      "community": 1,
+      "norm_label": "extract_signatures()"
+    },
+    {
+      "label": "extract_structured_fields()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_extract_extract_structured_fields",
+      "community": 1,
+      "norm_label": "extract_structured_fields()"
+    },
+    {
+      "label": "is_signature_question()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_extract_is_signature_question",
+      "community": 33,
+      "norm_label": "is_signature_question()"
+    },
+    {
+      "label": "is_structured_question()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_extract_is_structured_question",
+      "community": 21,
+      "norm_label": "is_structured_question()"
     },
     {
       "label": "ingest.py",
@@ -1060,7 +1186,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "neo4j_graphrag_ingest",
-      "community": 34,
+      "community": 21,
       "norm_label": "ingest.py"
     },
     {
@@ -1070,7 +1196,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "neo4j_graphrag_ingest_load_document",
-      "community": 34,
+      "community": 21,
       "norm_label": "load_document()"
     },
     {
@@ -1080,37 +1206,37 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_ingest_py_document",
-      "community": 34,
+      "community": 21,
       "norm_label": "document"
     },
     {
       "label": "chunk_text()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/ingest.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "neo4j_graphrag_ingest_chunk_text",
-      "community": 34,
+      "community": 21,
       "norm_label": "chunk_text()"
     },
     {
       "label": "build_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/ingest.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "neo4j_graphrag_ingest_build_chunks",
-      "community": 34,
+      "community": 21,
       "norm_label": "build_chunks()"
     },
     {
       "label": "Chunk",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/ingest.py",
-      "source_location": "L39",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_ingest_py_chunk",
-      "community": 34,
+      "community": 21,
       "norm_label": "chunk"
     },
     {
@@ -1377,7 +1503,7 @@
       "label": "Chunk",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/models.py",
-      "source_location": "L13",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "neo4j_graphrag_models_chunk",
       "community": 1,
@@ -1387,7 +1513,7 @@
       "label": "Entity",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/models.py",
-      "source_location": "L22",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "neo4j_graphrag_models_entity",
       "community": 1,
@@ -1397,7 +1523,7 @@
       "label": "Relation",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/models.py",
-      "source_location": "L30",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "neo4j_graphrag_models_relation",
       "community": 1,
@@ -1487,7 +1613,7 @@
       "label": "RetrievedChunk",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L12",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_retrievedchunk",
       "community": 33,
@@ -1497,57 +1623,137 @@
       "label": "RetrievedContext",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L18",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_retrievedcontext",
       "community": 33,
       "norm_label": "retrievedcontext"
     },
     {
+      "label": "_query_tokens()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_query_tokens",
+      "community": 33,
+      "norm_label": "_query_tokens()"
+    },
+    {
+      "label": "_chunk_tokens()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_chunk_tokens",
+      "community": 33,
+      "norm_label": "_chunk_tokens()"
+    },
+    {
+      "label": "_entity_hit_score()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_entity_hit_score",
+      "community": 33,
+      "norm_label": "_entity_hit_score()"
+    },
+    {
+      "label": "_token_overlap_score()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_token_overlap_score",
+      "community": 33,
+      "norm_label": "_token_overlap_score()"
+    },
+    {
+      "label": "_document_recency_score()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_document_recency_score",
+      "community": 33,
+      "norm_label": "_document_recency_score()"
+    },
+    {
+      "label": "_question_type_weights()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_question_type_weights",
+      "community": 33,
+      "norm_label": "_question_type_weights()"
+    },
+    {
       "label": "retrieve()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L23",
+      "source_location": "L85",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_retrieve",
-      "community": 34,
+      "community": 33,
       "norm_label": "retrieve()"
     },
     {
       "label": "GraphStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L23",
+      "source_location": "L85",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_retrieval_py_graphstore",
-      "community": 1,
+      "community": 33,
       "norm_label": "graphstore"
     },
     {
       "label": "VectorStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L23",
+      "source_location": "L85",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_retrieval_py_vectorstore",
-      "community": 1,
+      "community": 33,
       "norm_label": "vectorstore"
     },
     {
       "label": "retrieve_context()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L45",
+      "source_location": "L155",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_retrieve_context",
-      "community": 34,
+      "community": 33,
       "norm_label": "retrieve_context()"
+    },
+    {
+      "label": "explain_retrieval()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L194",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_explain_retrieval",
+      "community": 33,
+      "norm_label": "explain_retrieval()"
+    },
+    {
+      "label": "get_structured_answer()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L205",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_retrieval_get_structured_answer",
+      "community": 21,
+      "norm_label": "get_structured_answer()"
     },
     {
       "label": "looks_english()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L57",
+      "source_location": "L229",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_looks_english",
       "community": 33,
@@ -1557,7 +1763,7 @@
       "label": "translate_to_spanish()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L82",
+      "source_location": "L254",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_translate_to_spanish",
       "community": 33,
@@ -1567,7 +1773,7 @@
       "label": "compose_answer()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/retrieval.py",
-      "source_location": "L98",
+      "source_location": "L270",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_compose_answer",
       "community": 33,
@@ -1590,7 +1796,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore",
-      "community": 1,
+      "community": 26,
       "norm_label": "graphstore"
     },
     {
@@ -1644,14 +1850,14 @@
       "norm_label": ".list_chunks()"
     },
     {
-      "label": ".upsert_entities()",
+      "label": ".list_entities()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "neo4j_graphrag_store_graphstore_upsert_entities",
-      "community": 1,
-      "norm_label": ".upsert_entities()"
+      "id": "neo4j_graphrag_store_graphstore_list_entities",
+      "community": 26,
+      "norm_label": ".list_entities()"
     },
     {
       "label": "Entity",
@@ -1660,18 +1866,18 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_store_py_entity",
-      "community": 1,
+      "community": 26,
       "norm_label": "entity"
     },
     {
-      "label": ".upsert_relations()",
+      "label": ".list_relations()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
       "source_location": "L17",
       "_origin": "ast",
-      "id": "neo4j_graphrag_store_graphstore_upsert_relations",
-      "community": 1,
-      "norm_label": ".upsert_relations()"
+      "id": "neo4j_graphrag_store_graphstore_list_relations",
+      "community": 26,
+      "norm_label": ".list_relations()"
     },
     {
       "label": "Relation",
@@ -1680,44 +1886,74 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_store_py_relation",
-      "community": 1,
+      "community": 26,
       "norm_label": "relation"
+    },
+    {
+      "label": ".count_document_chunks()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_graphstore_count_document_chunks",
+      "community": 26,
+      "norm_label": ".count_document_chunks()"
+    },
+    {
+      "label": ".upsert_entities()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_graphstore_upsert_entities",
+      "community": 26,
+      "norm_label": ".upsert_entities()"
+    },
+    {
+      "label": ".upsert_relations()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_graphstore_upsert_relations",
+      "community": 26,
+      "norm_label": ".upsert_relations()"
     },
     {
       "label": ".delete_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L20",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_delete_document",
-      "community": 1,
+      "community": 26,
       "norm_label": ".delete_document()"
     },
     {
       "label": ".healthcheck()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L23",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_healthcheck",
-      "community": 1,
+      "community": 26,
       "norm_label": ".healthcheck()"
     },
     {
       "label": ".probe()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L26",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_probe",
-      "community": 1,
+      "community": 26,
       "norm_label": ".probe()"
     },
     {
       "label": "VectorStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L30",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore",
       "community": 1,
@@ -1727,7 +1963,7 @@
       "label": ".upsert_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L31",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore_upsert_chunks",
       "community": 26,
@@ -1737,17 +1973,27 @@
       "label": ".search()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L34",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore_search",
       "community": 26,
       "norm_label": ".search()"
     },
     {
+      "label": ".count_document_chunks()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_vectorstore_count_document_chunks",
+      "community": 1,
+      "norm_label": ".count_document_chunks()"
+    },
+    {
       "label": ".healthcheck()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L37",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore_healthcheck",
       "community": 1,
@@ -1757,7 +2003,7 @@
       "label": ".probe()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L40",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore_probe",
       "community": 1,
@@ -1767,27 +2013,27 @@
       "label": "InMemoryGraphStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L44",
+      "source_location": "L56",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore",
-      "community": 34,
+      "community": 26,
       "norm_label": "inmemorygraphstore"
     },
     {
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L45",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_init",
-      "community": 34,
+      "community": 26,
       "norm_label": ".__init__()"
     },
     {
       "label": ".upsert_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L51",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_document",
       "community": 26,
@@ -1797,7 +2043,7 @@
       "label": ".upsert_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L54",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_chunks",
       "community": 26,
@@ -1807,67 +2053,97 @@
       "label": ".list_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L58",
+      "source_location": "L70",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_list_chunks",
-      "community": 34,
+      "community": 26,
       "norm_label": ".list_chunks()"
+    },
+    {
+      "label": ".list_entities()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_inmemorygraphstore_list_entities",
+      "community": 26,
+      "norm_label": ".list_entities()"
+    },
+    {
+      "label": ".list_relations()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_inmemorygraphstore_list_relations",
+      "community": 26,
+      "norm_label": ".list_relations()"
+    },
+    {
+      "label": ".count_document_chunks()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_inmemorygraphstore_count_document_chunks",
+      "community": 26,
+      "norm_label": ".count_document_chunks()"
     },
     {
       "label": ".upsert_entities()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L61",
+      "source_location": "L82",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_entities",
-      "community": 1,
+      "community": 26,
       "norm_label": ".upsert_entities()"
     },
     {
       "label": ".upsert_relations()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L65",
+      "source_location": "L86",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_relations",
-      "community": 1,
+      "community": 26,
       "norm_label": ".upsert_relations()"
     },
     {
       "label": ".delete_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L68",
+      "source_location": "L89",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_delete_document",
-      "community": 34,
+      "community": 26,
       "norm_label": ".delete_document()"
     },
     {
       "label": ".healthcheck()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L82",
+      "source_location": "L103",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_healthcheck",
-      "community": 34,
+      "community": 26,
       "norm_label": ".healthcheck()"
     },
     {
       "label": ".probe()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L85",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_probe",
-      "community": 34,
+      "community": 26,
       "norm_label": ".probe()"
     },
     {
       "label": "InMemoryVectorStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L89",
+      "source_location": "L110",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore",
       "community": 34,
@@ -1877,7 +2153,7 @@
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L90",
+      "source_location": "L111",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_init",
       "community": 34,
@@ -1887,27 +2163,37 @@
       "label": ".upsert_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L93",
+      "source_location": "L114",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_upsert_chunks",
-      "community": 26,
+      "community": 34,
       "norm_label": ".upsert_chunks()"
     },
     {
       "label": ".search()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L98",
+      "source_location": "L119",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_search",
-      "community": 26,
+      "community": 34,
       "norm_label": ".search()"
+    },
+    {
+      "label": ".count_document_chunks()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L129",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_inmemoryvectorstore_count_document_chunks",
+      "community": 34,
+      "norm_label": ".count_document_chunks()"
     },
     {
       "label": ".healthcheck()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L108",
+      "source_location": "L132",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_healthcheck",
       "community": 34,
@@ -1917,7 +2203,7 @@
       "label": ".probe()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L111",
+      "source_location": "L135",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_probe",
       "community": 34,
@@ -1927,17 +2213,17 @@
       "label": "build_embeds_stub()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L115",
+      "source_location": "L139",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_embeds_stub",
-      "community": 34,
+      "community": 21,
       "norm_label": "build_embeds_stub()"
     },
     {
       "label": "Neo4jGraphStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L123",
+      "source_location": "L147",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore",
       "community": 26,
@@ -1947,7 +2233,7 @@
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L124",
+      "source_location": "L148",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_init",
       "community": 26,
@@ -1957,7 +2243,7 @@
       "label": ".close()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L129",
+      "source_location": "L153",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_close",
       "community": 21,
@@ -1967,7 +2253,7 @@
       "label": ".healthcheck()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L132",
+      "source_location": "L156",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_healthcheck",
       "community": 26,
@@ -1977,7 +2263,7 @@
       "label": ".probe()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L137",
+      "source_location": "L161",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_probe",
       "community": 26,
@@ -1987,7 +2273,7 @@
       "label": ".upsert_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L152",
+      "source_location": "L176",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_document",
       "community": 26,
@@ -1997,7 +2283,7 @@
       "label": ".upsert_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L162",
+      "source_location": "L186",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_chunks",
       "community": 26,
@@ -2007,27 +2293,57 @@
       "label": ".list_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L189",
+      "source_location": "L213",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_list_chunks",
       "community": 26,
       "norm_label": ".list_chunks()"
     },
     {
+      "label": ".list_entities()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L234",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_neo4jgraphstore_list_entities",
+      "community": 26,
+      "norm_label": ".list_entities()"
+    },
+    {
+      "label": ".list_relations()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L253",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_neo4jgraphstore_list_relations",
+      "community": 26,
+      "norm_label": ".list_relations()"
+    },
+    {
+      "label": ".count_document_chunks()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L272",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_neo4jgraphstore_count_document_chunks",
+      "community": 26,
+      "norm_label": ".count_document_chunks()"
+    },
+    {
       "label": ".upsert_entities()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L210",
+      "source_location": "L281",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_entities",
-      "community": 1,
+      "community": 26,
       "norm_label": ".upsert_entities()"
     },
     {
       "label": ".delete_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L230",
+      "source_location": "L301",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_delete_document",
       "community": 26,
@@ -2037,97 +2353,107 @@
       "label": ".upsert_relations()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L246",
+      "source_location": "L317",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_relations",
-      "community": 1,
+      "community": 26,
       "norm_label": ".upsert_relations()"
     },
     {
       "label": "QdrantVectorStore",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L277",
+      "source_location": "L348",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore",
-      "community": 26,
+      "community": 38,
       "norm_label": "qdrantvectorstore"
     },
     {
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L278",
+      "source_location": "L349",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_init",
-      "community": 26,
+      "community": 38,
       "norm_label": ".__init__()"
     },
     {
       "label": ".ensure_collection()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L284",
+      "source_location": "L355",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_ensure_collection",
-      "community": 26,
+      "community": 38,
       "norm_label": ".ensure_collection()"
     },
     {
       "label": ".upsert_chunks()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L295",
+      "source_location": "L366",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_upsert_chunks",
-      "community": 26,
+      "community": 38,
       "norm_label": ".upsert_chunks()"
     },
     {
       "label": ".search()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L318",
+      "source_location": "L389",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_search",
-      "community": 26,
+      "community": 38,
       "norm_label": ".search()"
+    },
+    {
+      "label": ".count_document_chunks()",
+      "file_type": "code",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L417",
+      "_origin": "ast",
+      "id": "neo4j_graphrag_store_qdrantvectorstore_count_document_chunks",
+      "community": 38,
+      "norm_label": ".count_document_chunks()"
     },
     {
       "label": ".healthcheck()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L346",
+      "source_location": "L434",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_healthcheck",
-      "community": 26,
+      "community": 38,
       "norm_label": ".healthcheck()"
     },
     {
       "label": ".delete_document()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L350",
+      "source_location": "L438",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_delete_document",
-      "community": 26,
+      "community": 38,
       "norm_label": ".delete_document()"
     },
     {
       "label": ".probe()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L367",
+      "source_location": "L455",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_qdrantvectorstore_probe",
-      "community": 26,
+      "community": 38,
       "norm_label": ".probe()"
     },
     {
       "label": "build_graph_store_from_config()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L372",
+      "source_location": "L460",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_graph_store_from_config",
       "community": 21,
@@ -2137,7 +2463,7 @@
       "label": "build_vector_store_from_config()",
       "file_type": "code",
       "source_file": "src/neo4j_graphrag/store.py",
-      "source_location": "L381",
+      "source_location": "L469",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_vector_store_from_config",
       "community": 21,
@@ -2234,6 +2560,26 @@
       "norm_label": "test_document_detail_endpoint_unknown()"
     },
     {
+      "label": "test_signature_question_returns_roles()",
+      "file_type": "code",
+      "source_file": "tests/test_api.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "tests_test_api_test_signature_question_returns_roles",
+      "community": 30,
+      "norm_label": "test_signature_question_returns_roles()"
+    },
+    {
+      "label": "test_ask_includes_explanation()",
+      "file_type": "code",
+      "source_file": "tests/test_api.py",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "tests_test_api_test_ask_includes_explanation",
+      "community": 30,
+      "norm_label": "test_ask_includes_explanation()"
+    },
+    {
       "label": "test_doctor.py",
       "file_type": "code",
       "source_file": "tests/test_doctor.py",
@@ -2272,6 +2618,46 @@
       "id": "tests_test_extract_test_extract_entities_and_relations",
       "community": 1,
       "norm_label": "test_extract_entities_and_relations()"
+    },
+    {
+      "label": "test_extract_signatures()",
+      "file_type": "code",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "tests_test_extract_test_extract_signatures",
+      "community": 1,
+      "norm_label": "test_extract_signatures()"
+    },
+    {
+      "label": "test_signature_question_detection()",
+      "file_type": "code",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tests_test_extract_test_signature_question_detection",
+      "community": 1,
+      "norm_label": "test_signature_question_detection()"
+    },
+    {
+      "label": "test_extract_structured_fields()",
+      "file_type": "code",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "tests_test_extract_test_extract_structured_fields",
+      "community": 1,
+      "norm_label": "test_extract_structured_fields()"
+    },
+    {
+      "label": "test_structured_question_detection()",
+      "file_type": "code",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "tests_test_extract_test_structured_question_detection",
+      "community": 1,
+      "norm_label": "test_structured_question_detection()"
     },
     {
       "label": "test_healthcheck.py",
@@ -2320,7 +2706,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_ingest",
-      "community": 34,
+      "community": 21,
       "norm_label": "test_ingest.py"
     },
     {
@@ -2330,7 +2716,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "tests_test_ingest_test_chunk_text_overlap",
-      "community": 34,
+      "community": 21,
       "norm_label": "test_chunk_text_overlap()"
     },
     {
@@ -2360,7 +2746,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_pipeline",
-      "community": 34,
+      "community": 1,
       "norm_label": "test_pipeline.py"
     },
     {
@@ -2370,7 +2756,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "tests_test_pipeline_test_pipeline_ingest_roundtrip",
-      "community": 34,
+      "community": 21,
       "norm_label": "test_pipeline_ingest_roundtrip()"
     },
     {
@@ -2410,7 +2796,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "tests_test_retrieval_test_retrieve_returns_relevant_chunk",
-      "community": 34,
+      "community": 33,
       "norm_label": "test_retrieve_returns_relevant_chunk()"
     },
     {
@@ -2420,14 +2806,24 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "tests_test_retrieval_test_retrieve_context_filters_to_document",
-      "community": 34,
+      "community": 33,
       "norm_label": "test_retrieve_context_filters_to_document()"
+    },
+    {
+      "label": "test_retrieve_prefers_most_recent_document_when_scores_tie()",
+      "file_type": "code",
+      "source_file": "tests/test_retrieval.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
+      "community": 33,
+      "norm_label": "test_retrieve_prefers_most_recent_document_when_scores_tie()"
     },
     {
       "label": "test_compose_answer_includes_question()",
       "file_type": "code",
       "source_file": "tests/test_retrieval.py",
-      "source_location": "L46",
+      "source_location": "L76",
       "_origin": "ast",
       "id": "tests_test_retrieval_test_compose_answer_includes_question",
       "community": 33,
@@ -2502,6 +2898,106 @@
       "id": "readme_openrouter",
       "community": 23,
       "norm_label": "openrouter"
+    },
+    {
+      "label": "plan_grafos_embeddings.md",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings",
+      "community": 35,
+      "norm_label": "plan_grafos_embeddings.md"
+    },
+    {
+      "label": "Plan de aprovechamiento de grafos y embeddings",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "community": 35,
+      "norm_label": "plan de aprovechamiento de grafos y embeddings"
+    },
+    {
+      "label": "1. Validaci\u00f3n de ingesta",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_1_validaci\u00f3n_de_ingesta",
+      "community": 35,
+      "norm_label": "1. validacion de ingesta"
+    },
+    {
+      "label": "2. Recuperaci\u00f3n h\u00edbrida",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_2_recuperaci\u00f3n_h\u00edbrida",
+      "community": 35,
+      "norm_label": "2. recuperacion hibrida"
+    },
+    {
+      "label": "3. Consulta por tipo de pregunta",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_3_consulta_por_tipo_de_pregunta",
+      "community": 35,
+      "norm_label": "3. consulta por tipo de pregunta"
+    },
+    {
+      "label": "4. Explotaci\u00f3n del grafo",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_4_explotaci\u00f3n_del_grafo",
+      "community": 35,
+      "norm_label": "4. explotacion del grafo"
+    },
+    {
+      "label": "5. Mejora del ranking",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_5_mejora_del_ranking",
+      "community": 35,
+      "norm_label": "5. mejora del ranking"
+    },
+    {
+      "label": "6. UX de usuario",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_6_ux_de_usuario",
+      "community": 35,
+      "norm_label": "6. ux de usuario"
+    },
+    {
+      "label": "7. Observabilidad",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_7_observabilidad",
+      "community": 35,
+      "norm_label": "7. observabilidad"
+    },
+    {
+      "label": "8. Criterio de cierre",
+      "file_type": "document",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "docs_plan_grafos_embeddings_8_criterio_de_cierre",
+      "community": 35,
+      "norm_label": "8. criterio de cierre"
     },
     {
       "label": "00_contexto_general.md",
@@ -3900,6 +4396,26 @@
       "target": "frontend_tsconfig_compileroptions_usedefineforclassfields"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_graphify.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_refresh_graphify",
+      "target": "home_crrb_codex_projects_neo4j_scripts_refresh_graphify_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/stage_graphify.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_stage_graphify",
+      "target": "home_crrb_codex_projects_neo4j_scripts_stage_graphify_sh__entry"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/__init__.py",
@@ -3933,6 +4449,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_api_current_ingest_timestamp"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L187",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -3958,6 +4484,16 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_api",
       "target": "neo4j_graphrag_api_documentresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_api_documents_metadata_by_id"
     },
     {
       "relation": "contains",
@@ -4053,6 +4589,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_api_sort_documents_by_ingest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L22",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -4118,6 +4664,39 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_extract"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_extract_is_structured_question"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -4175,9 +4754,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "neo4j_graphrag_api",
-      "target": "neo4j_graphrag_models",
-      "confidence_score": 1.0
+      "target": "neo4j_graphrag_models"
     },
     {
       "relation": "imports",
@@ -4186,9 +4765,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "neo4j_graphrag_api",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 1.0
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "imports_from",
@@ -4211,6 +4790,28 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_api",
       "target": "neo4j_graphrag_retrieval_compose_answer"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_retrieval_explain_retrieval"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api",
+      "target": "neo4j_graphrag_retrieval_get_structured_answer"
     },
     {
       "relation": "imports",
@@ -4312,6 +4913,17 @@
       "target": "neo4j_graphrag_api_normalize_document_id"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api_upload_document",
+      "target": "neo4j_graphrag_api_current_ingest_timestamp"
+    },
+    {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
@@ -4338,9 +4950,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "neo4j_graphrag_api_questionrequest",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "inherits",
@@ -4398,9 +5010,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "neo4j_graphrag_api_ingestresponse",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "references",
@@ -4430,9 +5042,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "neo4j_graphrag_api_askresponse",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "references",
@@ -4451,9 +5063,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "neo4j_graphrag_api_jobresponse",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "uses",
@@ -4461,9 +5073,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "neo4j_graphrag_api_documentresponse",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "references",
@@ -4493,9 +5105,31 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "neo4j_graphrag_api_deleteresponse",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L303",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api_ask_question",
+      "target": "neo4j_graphrag_api_sort_documents_by_ingest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L337",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_api_ask_question",
+      "target": "neo4j_graphrag_api_documents_metadata_by_id"
     },
     {
       "relation": "calls",
@@ -4624,6 +5258,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_api_upload_document",
+      "target": "neo4j_graphrag_models_document"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L58",
       "weight": 1.0,
       "source": "neo4j_graphrag_api_upload_document",
@@ -4657,9 +5302,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "backgroundtasks",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "uses",
@@ -4667,9 +5312,9 @@
       "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L15",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "uploadfile",
-      "target": "neo4j_graphrag_models_document",
-      "confidence_score": 0.5
+      "target": "neo4j_graphrag_models_document"
     },
     {
       "relation": "calls",
@@ -4798,6 +5443,28 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L270",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_api_ask_question",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L290",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_api_ask_question",
+      "target": "neo4j_graphrag_extract_is_structured_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/api.py",
       "source_location": "L96",
       "weight": 1.0,
       "source": "neo4j_graphrag_api_ask_question",
@@ -4846,6 +5513,28 @@
       "weight": 1.0,
       "source": "neo4j_graphrag_api_ask_question",
       "target": "neo4j_graphrag_retrieval_compose_answer"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L343",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_api_ask_question",
+      "target": "neo4j_graphrag_retrieval_explain_retrieval"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/api.py",
+      "source_location": "L275",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_api_ask_question",
+      "target": "neo4j_graphrag_retrieval_get_structured_answer"
     },
     {
       "relation": "calls",
@@ -5723,6 +6412,28 @@
       "target": "neo4j_graphrag_extract_extract_relations"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/connectors.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_connectors",
+      "target": "neo4j_graphrag_extract_extract_signatures"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/connectors.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_connectors",
+      "target": "neo4j_graphrag_extract_extract_structured_fields"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -6214,6 +6925,28 @@
       "target": "neo4j_graphrag_extract_extract_relations"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/connectors.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_connectors_pipeline_ingest",
+      "target": "neo4j_graphrag_extract_extract_signatures"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/neo4j_graphrag/connectors.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "neo4j_graphrag_connectors_pipeline_ingest",
+      "target": "neo4j_graphrag_extract_extract_structured_fields"
+    },
+    {
       "relation": "references",
       "context": "generic_arg",
       "confidence": "EXTRACTED",
@@ -6397,6 +7130,17 @@
       "source_location": "L36",
       "weight": 1.0,
       "source": "tests_test_retrieval_test_retrieve_context_filters_to_document",
+      "target": "neo4j_graphrag_connectors_ingest_document"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_retrieval.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
       "target": "neo4j_graphrag_connectors_ingest_document"
     },
     {
@@ -6591,6 +7335,46 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_extract",
       "target": "neo4j_graphrag_extract_extract_relations"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_extract",
+      "target": "neo4j_graphrag_extract_extract_signatures"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_extract",
+      "target": "neo4j_graphrag_extract_extract_structured_fields"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_extract",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/extract.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_extract",
+      "target": "neo4j_graphrag_extract_is_structured_question"
     },
     {
       "relation": "imports_from",
@@ -6859,6 +7643,83 @@
       "target": "neo4j_graphrag_models_relation"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_extract.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "tests_test_extract_test_extract_signatures",
+      "target": "neo4j_graphrag_extract_extract_signatures"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_extract.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "tests_test_extract_test_extract_structured_fields",
+      "target": "neo4j_graphrag_extract_extract_structured_fields"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_compose_answer",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_question_type_weights",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_extract.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "tests_test_extract_test_signature_question_detection",
+      "target": "neo4j_graphrag_extract_is_signature_question"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_extract.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "tests_test_extract_test_structured_question_detection",
+      "target": "neo4j_graphrag_extract_is_structured_question"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/ingest.py",
@@ -7026,6 +7887,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_retrieval.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
+      "target": "neo4j_graphrag_ingest_load_document"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_retrieval.py",
       "source_location": "L10",
       "weight": 1.0,
       "source": "tests_test_retrieval_test_retrieve_returns_relevant_chunk",
@@ -7137,6 +8009,17 @@
       "source_location": "L31",
       "weight": 1.0,
       "source": "tests_test_retrieval_test_retrieve_context_filters_to_document",
+      "target": "neo4j_graphrag_ingest_build_chunks"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_retrieval.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
       "target": "neo4j_graphrag_ingest_build_chunks"
     },
     {
@@ -8452,6 +9335,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_chunk_tokens"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
       "source_location": "L26",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8462,11 +9355,71 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_document_recency_score"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_entity_hit_score"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L180",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_explain_retrieval"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_get_structured_answer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
       "source_location": "L40",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_retrieval",
       "target": "neo4j_graphrag_retrieval_looks_english"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_query_tokens"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_question_type_weights"
     },
     {
       "relation": "contains",
@@ -8507,6 +9460,16 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_retrieval",
       "target": "neo4j_graphrag_retrieval_retrievedcontext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval",
+      "target": "neo4j_graphrag_retrieval_token_overlap_score"
     },
     {
       "relation": "contains",
@@ -8617,6 +9580,17 @@
     },
     {
       "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L180",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_explain_retrieval",
+      "target": "neo4j_graphrag_retrieval_retrievedcontext"
+    },
+    {
+      "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/retrieval.py",
@@ -8656,6 +9630,94 @@
       "weight": 1.0,
       "source": "tests_test_retrieval_test_compose_answer_includes_question",
       "target": "neo4j_graphrag_retrieval_retrievedcontext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_chunk_tokens",
+      "target": "neo4j_graphrag_retrieval_query_tokens"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_entity_hit_score",
+      "target": "neo4j_graphrag_retrieval_query_tokens"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_token_overlap_score",
+      "target": "neo4j_graphrag_retrieval_query_tokens"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_token_overlap_score",
+      "target": "neo4j_graphrag_retrieval_chunk_tokens"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_retrieve",
+      "target": "neo4j_graphrag_retrieval_entity_hit_score"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_retrieve",
+      "target": "neo4j_graphrag_retrieval_token_overlap_score"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_retrieve",
+      "target": "neo4j_graphrag_retrieval_document_recency_score"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/retrieval.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_retrieval_retrieve",
+      "target": "neo4j_graphrag_retrieval_question_type_weights"
     },
     {
       "relation": "references",
@@ -8772,6 +9834,17 @@
       "source_location": "L39",
       "weight": 1.0,
       "source": "tests_test_retrieval_test_retrieve_context_filters_to_document",
+      "target": "neo4j_graphrag_retrieval_retrieve_context"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_retrieval.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
       "target": "neo4j_graphrag_retrieval_retrieve_context"
     },
     {
@@ -8967,6 +10040,16 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_graphstore",
+      "target": "neo4j_graphrag_store_graphstore_count_document_chunks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
       "source_location": "L20",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -8992,6 +10075,26 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_graphstore",
       "target": "neo4j_graphrag_store_graphstore_list_chunks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_graphstore",
+      "target": "neo4j_graphrag_store_graphstore_list_entities"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_graphstore",
+      "target": "neo4j_graphrag_store_graphstore_list_relations"
     },
     {
       "relation": "method",
@@ -9269,7 +10372,29 @@
       "source_location": "L14",
       "weight": 1.0,
       "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_graphstore_list_entities",
+      "target": "src_neo4j_graphrag_store_py_entity"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_graphstore_upsert_entities",
+      "target": "src_neo4j_graphrag_store_py_entity"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_inmemorygraphstore_list_entities",
       "target": "src_neo4j_graphrag_store_py_entity"
     },
     {
@@ -9281,6 +10406,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_inmemorygraphstore_upsert_entities",
+      "target": "src_neo4j_graphrag_store_py_entity"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_neo4jgraphstore_list_entities",
       "target": "src_neo4j_graphrag_store_py_entity"
     },
     {
@@ -9302,7 +10438,29 @@
       "source_location": "L17",
       "weight": 1.0,
       "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_graphstore_list_relations",
+      "target": "src_neo4j_graphrag_store_py_relation"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_graphstore_upsert_relations",
+      "target": "src_neo4j_graphrag_store_py_relation"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_inmemorygraphstore_list_relations",
       "target": "src_neo4j_graphrag_store_py_relation"
     },
     {
@@ -9314,6 +10472,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_inmemorygraphstore_upsert_relations",
+      "target": "src_neo4j_graphrag_store_py_relation"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L253",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_neo4jgraphstore_list_relations",
       "target": "src_neo4j_graphrag_store_py_relation"
     },
     {
@@ -9357,6 +10526,16 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_qdrantvectorstore",
       "target": "neo4j_graphrag_store_vectorstore"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_vectorstore",
+      "target": "neo4j_graphrag_store_vectorstore_count_document_chunks"
     },
     {
       "relation": "method",
@@ -9413,6 +10592,16 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_inmemorygraphstore",
+      "target": "neo4j_graphrag_store_inmemorygraphstore_count_document_chunks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
       "source_location": "L68",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9448,6 +10637,26 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_inmemorygraphstore",
       "target": "neo4j_graphrag_store_inmemorygraphstore_list_chunks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_inmemorygraphstore",
+      "target": "neo4j_graphrag_store_inmemorygraphstore_list_entities"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_inmemorygraphstore",
+      "target": "neo4j_graphrag_store_inmemorygraphstore_list_relations"
     },
     {
       "relation": "method",
@@ -9549,6 +10758,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_retrieval.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
+      "target": "neo4j_graphrag_store_inmemorygraphstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_retrieval.py",
       "source_location": "L12",
       "weight": 1.0,
       "source": "tests_test_retrieval_test_retrieve_returns_relevant_chunk",
@@ -9564,6 +10784,16 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_build_vector_store_from_config",
       "target": "neo4j_graphrag_store_inmemoryvectorstore"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L117",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_inmemoryvectorstore",
+      "target": "neo4j_graphrag_store_inmemoryvectorstore_count_document_chunks"
     },
     {
       "relation": "method",
@@ -9665,6 +10895,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/test_retrieval.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie",
+      "target": "neo4j_graphrag_store_inmemoryvectorstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_retrieval.py",
       "source_location": "L13",
       "weight": 1.0,
       "source": "tests_test_retrieval_test_retrieve_returns_relevant_chunk",
@@ -9706,6 +10947,16 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L222",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_neo4jgraphstore",
+      "target": "neo4j_graphrag_store_neo4jgraphstore_count_document_chunks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
       "source_location": "L265",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9741,6 +10992,26 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_neo4jgraphstore",
       "target": "neo4j_graphrag_store_neo4jgraphstore_list_chunks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_neo4jgraphstore",
+      "target": "neo4j_graphrag_store_neo4jgraphstore_list_entities"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L253",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_neo4jgraphstore",
+      "target": "neo4j_graphrag_store_neo4jgraphstore_list_relations"
     },
     {
       "relation": "method",
@@ -9824,6 +11095,16 @@
       "confidence_score": 1.0,
       "source": "neo4j_graphrag_store_build_vector_store_from_config",
       "target": "neo4j_graphrag_store_qdrantvectorstore"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/neo4j_graphrag/store.py",
+      "source_location": "L367",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "neo4j_graphrag_store_qdrantvectorstore",
+      "target": "neo4j_graphrag_store_qdrantvectorstore_count_document_chunks"
     },
     {
       "relation": "method",
@@ -9941,6 +11222,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_api.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_api",
+      "target": "tests_test_api_test_ask_includes_explanation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api.py",
       "source_location": "L51",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -10000,6 +11291,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "tests/test_api.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_api",
+      "target": "tests_test_api_test_signature_question_returns_roles"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "tests/test_doctor.py",
       "source_location": "L4",
       "weight": 1.0,
@@ -10016,6 +11317,46 @@
       "confidence_score": 1.0,
       "source": "tests_test_extract",
       "target": "tests_test_extract_test_extract_entities_and_relations"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_extract",
+      "target": "tests_test_extract_test_extract_signatures"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_extract",
+      "target": "tests_test_extract_test_extract_structured_fields"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_extract",
+      "target": "tests_test_extract_test_signature_question_detection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_extract.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_extract",
+      "target": "tests_test_extract_test_structured_question_detection"
     },
     {
       "relation": "contains",
@@ -10093,9 +11434,19 @@
       "source_file": "tests/test_retrieval.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_retrieval",
-      "target": "tests_test_retrieval_test_retrieve_context_filters_to_document",
-      "confidence_score": 1.0
+      "target": "tests_test_retrieval_test_retrieve_context_filters_to_document"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_retrieval.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_retrieval",
+      "target": "tests_test_retrieval_test_retrieve_prefers_most_recent_document_when_scores_tie"
     },
     {
       "relation": "contains",
@@ -10166,6 +11517,96 @@
       "confidence_score": 1.0,
       "source": "readme_neo4j_graphrag",
       "target": "readme_uso"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings",
+      "target": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_1_validaci\u00f3n_de_ingesta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_2_recuperaci\u00f3n_h\u00edbrida"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_3_consulta_por_tipo_de_pregunta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_4_explotaci\u00f3n_del_grafo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_5_mejora_del_ranking"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_6_ux_de_usuario"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_7_observabilidad"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plan_grafos_embeddings.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
+      "target": "docs_plan_grafos_embeddings_8_criterio_de_cierre"
     },
     {
       "relation": "semantically_similar_to",
@@ -10879,5 +12320,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f40f0c666990c0c4fb62095a7e10c42ff297219a"
+  "built_at_commit": "74364808beea0b50590ef4d67eb5d17558a5f41b"
 }

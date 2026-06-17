@@ -43,6 +43,36 @@ def test_retrieve_context_filters_to_document(tmp_path):
     assert "oracle" in retrieved.chunks[0].chunk.text.lower()
 
 
+def test_retrieve_prefers_most_recent_document_when_scores_tie(tmp_path):
+    old_path = tmp_path / "old.txt"
+    new_path = tmp_path / "new.txt"
+    old_path.write_text("Oracle APEX modernizes hospital workflows.", encoding="utf-8")
+    new_path.write_text("Oracle APEX modernizes hospital workflows.", encoding="utf-8")
+
+    old_document = load_document(str(old_path))
+    new_document = load_document(str(new_path))
+    old_chunks = build_chunks(old_document, chunk_size=30, overlap=0)
+    new_chunks = build_chunks(new_document, chunk_size=30, overlap=0)
+
+    graph_store = InMemoryGraphStore()
+    vector_store = InMemoryVectorStore()
+    ingest_document(old_document, old_chunks, graph_store, vector_store, model_name="stub")
+    ingest_document(new_document, new_chunks, graph_store, vector_store, model_name="stub")
+
+    retrieved = retrieve_context(
+        "Oracle APEX modernizes hospital workflows",
+        graph_store,
+        vector_store,
+        document_metadata={
+            old_document.id: {"ingested_at_utc": "2026-06-16T10:00:00+00:00"},
+            new_document.id: {"ingested_at_utc": "2026-06-17T10:00:00+00:00"},
+        },
+    )
+
+    assert retrieved.chunks
+    assert retrieved.chunks[0].chunk.document_id == new_document.id
+
+
 def test_compose_answer_includes_question():
     from neo4j_graphrag.retrieval import RetrievedContext
 

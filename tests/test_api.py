@@ -68,3 +68,32 @@ def test_document_detail_endpoint_unknown():
     assert response.status_code == 200
     payload = response.json()
     assert payload["document_id"] == "unknown"
+
+
+def test_signature_question_returns_roles():
+    response = client.post(
+        "/documents",
+        files={"file": ("doc.txt", b"Elaborado por: Cbop. Marco Ortiz\nRevisado y aprobado por: Tcrn. Juan Carlos Sanchez", "text/plain")},
+        data={"embedding_model": "text-embedding-3-large"},
+    )
+    assert response.status_code == 200
+
+    response = client.post(
+        "/questions",
+        params={"scope": "all"},
+        json={"question": "¿Quién firmó el documento?", "limit": 1},
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert "Firmas o roles detectados" in payload["answer"]
+
+
+def test_ask_includes_explanation():
+    response = client.post(
+        "/questions",
+        params={"scope": "all"},
+        json={"question": "Neo4j", "limit": 1},
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert "explanation" in payload

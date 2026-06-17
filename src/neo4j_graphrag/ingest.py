@@ -15,6 +15,7 @@ def load_document(path: str) -> Document:
         path=str(file_path),
         title=file_path.stem,
         text=text,
+        metadata={},
     )
 
 

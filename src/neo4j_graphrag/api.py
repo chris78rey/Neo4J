@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -8,13 +9,15 @@ from uuid import uuid4
 from fastapi import BackgroundTasks, FastAPI, File, Form, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from pydantic import Field
 
 from .config import load_config
 from .connectors import ingest_document
+from .extract import is_signature_question
 from .job_store import get_job_store
 from .ingest import build_chunks, load_document
 from .models import Document
-from .retrieval import compose_answer, retrieve_context
+from .retrieval import compose_answer, explain_retrieval, get_structured_answer, retrieve_context
 from .store import build_graph_store_from_config, build_vector_store_from_config
 
 
@@ -61,6 +64,11 @@ class AskResponse(BaseModel):
     answer: str
     document_count: int
     chunk_count: int
+    explanation: list[str] = Field(default_factory=list)
+    embedding_chunk_count: int = 0
+    graph_chunk_count: int = 0
+    related_documents: list[str] = Field(default_factory=list)
+    structured_answer_used: bool = False
 
 
 class JobResponse(BaseModel):
@@ -76,6 +84,8 @@ class DocumentResponse(BaseModel):
     source_type: str | None = None
     ingested_at_utc: str | None = None
     ingested_at_ecuador: str | None = None
+    signatures: dict[str, str] | None = None
+    structured_fields: dict[str, str] | None = None
     job_id: str | None = None
     chunks: int | None = None
     entities: int | None = None
@@ -92,6 +102,16 @@ def sort_documents_by_ingest(payloads: list[dict[str, str]]) -> list[dict[str, s
         payloads,
         key=lambda item: item.get("ingested_at_utc") or item.get("ingested_at_ecuador") or "",
     )
+
+
+def documents_metadata_by_id(payloads: list[dict[str, str]]) -> dict[str, dict[str, str]]:
+    metadata: dict[str, dict[str, str]] = {}
+    for payload in payloads:
+        document_id = payload.get("document_id")
+        if not document_id:
+            continue
+        metadata[document_id] = payload
+    return metadata
 
 
 @app.get("/health")
@@ -167,6 +187,8 @@ async def upload_document(
                     "source": document.path,
                     "source_type": "text" if text else ("path" if path else "file"),
                     "text": document.text,
+                    "signatures": json.dumps(document.metadata.get("signatures", {}), ensure_ascii=False),
+                    "structured_fields": json.dumps(document.metadata.get("structured_fields", {}), ensure_ascii=False),
                     "ingested_at_utc": ingested_at_utc,
                     "ingested_at_ecuador": ingested_at_ecuador,
                     "job_id": job_id,
@@ -219,6 +241,8 @@ def get_document(document_id: str) -> DocumentResponse:
         source_type=payload.get("source_type"),
         ingested_at_utc=payload.get("ingested_at_utc"),
         ingested_at_ecuador=payload.get("ingested_at_ecuador"),
+        signatures=json.loads(payload["signatures"]) if payload.get("signatures") else None,
+        structured_fields=json.loads(payload["structured_fields"]) if payload.get("structured_fields") else None,
         job_id=payload.get("job_id"),
         chunks=int(payload.get("chunks", "0")) if payload.get("chunks") else None,
         entities=int(payload.get("entities", "0")) if payload.get("entities") else None,
@@ -262,6 +286,20 @@ def ask_question(
     embedding_model_value = request.embedding_model or config.openrouter_embedding_model or config.embedding_model
     chat_model = request.model or config.openrouter_chat_model or config.llm_model
     job_store = get_job_store(config.job_store_path)
+    if not path:
+        docs = list(job_store.list_by_prefix("doc:").values())
+        structured_answer = get_structured_answer(request.question, docs)
+        if structured_answer:
+            return AskResponse(
+                answer=structured_answer,
+                document_count=len(docs),
+                chunk_count=0,
+                explanation=[],
+                embedding_chunk_count=0,
+                graph_chunk_count=0,
+                related_documents=[],
+                structured_answer_used=True,
+            )
     if path:
         document = load_document(path)
         chunks = build_chunks(document, config.chunk_size, config.chunk_overlap)
@@ -301,8 +339,18 @@ def ask_question(
                 vector_store=vector_store,
                 model_name=embedding_model_value,
             )
-    context = retrieve_context(request.question, graph_store, vector_store, limit=request.limit)
+    corpus = list(job_store.list_by_prefix("doc:").values())
+    context = retrieve_context(
+        request.question,
+        graph_store,
+        vector_store,
+        limit=request.limit,
+        document_metadata=documents_metadata_by_id(corpus),
+    )
     answer = compose_answer(request.question, context, model_name=chat_model)
+    explanation = explain_retrieval(context)
+    embedding_chunk_count = sum(1 for item in context.chunks if item.origin == "embeddings+graph")
+    graph_chunk_count = sum(1 for item in context.chunks if item.origin == "graph")
     close = getattr(graph_store, "close", None)
     if callable(close):
         close()
@@ -310,6 +358,11 @@ def ask_question(
         answer=answer,
         document_count=len(job_store.list_by_prefix("doc:")),
         chunk_count=len(context.chunks),
+        explanation=explanation,
+        embedding_chunk_count=embedding_chunk_count,
+        graph_chunk_count=graph_chunk_count,
+        related_documents=context.related_documents or [],
+        structured_answer_used=False,
     )
 
 

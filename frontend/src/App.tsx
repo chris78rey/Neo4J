@@ -159,10 +159,33 @@ function AskPage() {
   const [askScope, setAskScope] = useState<'all' | 'latest' | 'last_n'>('all')
   const [latestCount, setLatestCount] = useState('5')
   let askSummary = 'No answer yet.'
+  let askExplanation: string[] = []
+  let askSourceStats = ''
+  let askRelatedDocuments: string[] = []
   try {
-    const parsed = JSON.parse(askResult) as { document_count?: number; chunk_count?: number }
+    const parsed = JSON.parse(askResult) as {
+      document_count?: number
+      chunk_count?: number
+      explanation?: string[]
+      embedding_chunk_count?: number
+      graph_chunk_count?: number
+      related_documents?: string[]
+      structured_answer_used?: boolean
+    }
     if (parsed && typeof parsed.document_count === 'number') {
       askSummary = `${parsed.document_count} documentos · ${parsed.chunk_count ?? 0} chunks`
+    }
+    if (parsed && Array.isArray(parsed.explanation)) {
+      askExplanation = parsed.explanation
+    }
+    if (parsed) {
+      askSourceStats = `${parsed.embedding_chunk_count ?? 0} embeddings · ${parsed.graph_chunk_count ?? 0} graph`
+      if (Array.isArray(parsed.related_documents)) {
+        askRelatedDocuments = parsed.related_documents
+      }
+      if (parsed.structured_answer_used) {
+        askExplanation = ['Respuesta tomada directamente desde metadata estructurada del documento.']
+      }
     }
   } catch {
     askSummary = 'No answer yet.'
@@ -213,7 +236,33 @@ function AskPage() {
           <span>Context summary</span>
           <strong>{askSummary}</strong>
         </div>
+        {askSourceStats && (
+          <div className="active-source">
+            <span>Source mix</span>
+            <strong>{askSourceStats}</strong>
+          </div>
+        )}
         <pre>{askResult}</pre>
+        {askExplanation.length > 0 && (
+          <>
+            <h4>Why these chunks</h4>
+            <ul className="explain-list">
+              {askExplanation.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {askRelatedDocuments.length > 0 && (
+          <>
+            <h4>Related documents via graph</h4>
+            <ul className="explain-list">
+              {askRelatedDocuments.map((doc) => (
+                <li key={doc}>{doc}</li>
+              ))}
+            </ul>
+          </>
+        )}
       </article>
     </section>
   )

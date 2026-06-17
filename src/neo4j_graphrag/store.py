@@ -11,6 +11,15 @@ class GraphStore:
     def list_chunks(self) -> list[Chunk]:
         raise NotImplementedError
 
+    def list_entities(self) -> list[Entity]:
+        raise NotImplementedError
+
+    def list_relations(self) -> list[Relation]:
+        raise NotImplementedError
+
+    def count_document_chunks(self, document_id: str) -> int:
+        raise NotImplementedError
+
     def upsert_entities(self, entities: list[Entity]) -> None:
         raise NotImplementedError
 
@@ -32,6 +41,9 @@ class VectorStore:
         raise NotImplementedError
 
     def search(self, query: str, limit: int = 3) -> list[tuple[Chunk, float]]:
+        raise NotImplementedError
+
+    def count_document_chunks(self, document_id: str) -> int:
         raise NotImplementedError
 
     def healthcheck(self) -> bool:
@@ -57,6 +69,15 @@ class InMemoryGraphStore(GraphStore):
 
     def list_chunks(self) -> list[Chunk]:
         return list(self.chunks.values())
+
+    def list_entities(self) -> list[Entity]:
+        return list(self.entities.values())
+
+    def list_relations(self) -> list[Relation]:
+        return list(self.relations)
+
+    def count_document_chunks(self, document_id: str) -> int:
+        return sum(1 for chunk in self.chunks.values() if chunk.document_id == document_id)
 
     def upsert_entities(self, entities: list[Entity]) -> None:
         for entity in entities:
@@ -104,6 +125,9 @@ class InMemoryVectorStore(VectorStore):
             scored.append((chunk, score))
         scored.sort(key=lambda item: item[1], reverse=True)
         return scored[:limit]
+
+    def count_document_chunks(self, document_id: str) -> int:
+        return sum(1 for chunk, _embedding in self.records if chunk.document_id == document_id)
 
     def healthcheck(self) -> bool:
         return True
@@ -206,6 +230,53 @@ class Neo4jGraphStore(GraphStore):
                     )
                 )
             return chunks
+
+    def list_entities(self) -> list[Entity]:
+        query = """
+        MATCH (e:Entity)
+        RETURN e.id AS id, e.document_id AS document_id, e.name AS name, e.entity_type AS entity_type
+        """
+        with self.driver.session() as session:
+            records = session.run(query)
+            entities: list[Entity] = []
+            for record in records:
+                entities.append(
+                    Entity(
+                        id=record["id"],
+                        document_id=record["document_id"],
+                        name=record["name"],
+                        entity_type=record["entity_type"] or "unknown",
+                    )
+                )
+            return entities
+
+    def list_relations(self) -> list[Relation]:
+        query = """
+        MATCH (source:Entity)-[r:RELATED_TO]->(target:Entity)
+        RETURN source.id AS source_id, target.id AS target_id, r.type AS relation_type, r.confidence AS confidence
+        """
+        with self.driver.session() as session:
+            records = session.run(query)
+            relations: list[Relation] = []
+            for record in records:
+                relations.append(
+                    Relation(
+                        source_id=record["source_id"],
+                        target_id=record["target_id"],
+                        relation_type=record["relation_type"],
+                        confidence=float(record["confidence"] or 1.0),
+                    )
+                )
+            return relations
+
+    def count_document_chunks(self, document_id: str) -> int:
+        query = """
+        MATCH (c:Chunk {document_id: $document_id})
+        RETURN count(c) AS count
+        """
+        with self.driver.session() as session:
+            record = session.run(query, document_id=document_id).single()
+            return int(record["count"]) if record else 0
 
     def upsert_entities(self, entities: list[Entity]) -> None:
         query = """
@@ -342,6 +413,23 @@ class QdrantVectorStore(VectorStore):
                 )
             )
         return matches
+
+    def count_document_chunks(self, document_id: str) -> int:
+        from qdrant_client.http import models as rest
+
+        result = self.client.count(
+            collection_name=self.collection_name,
+            count_filter=rest.Filter(
+                must=[
+                    rest.FieldCondition(
+                        key="document_id",
+                        match=rest.MatchValue(value=document_id),
+                    )
+                ]
+            ),
+            exact=True,
+        )
+        return int(result.count)
 
     def healthcheck(self) -> bool:
         _ = self.client.get_collections()
