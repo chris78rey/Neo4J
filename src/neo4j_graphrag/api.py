@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from uuid import uuid4
@@ -35,6 +36,12 @@ def normalize_document_id(document_id: str) -> str:
     return document_id.removeprefix("doc:")
 
 
+def current_ingest_timestamp() -> tuple[str, str]:
+    utc_now = datetime.now(timezone.utc)
+    ecuador_tz = timezone(timedelta(hours=-5))
+    return utc_now.isoformat(), utc_now.astimezone(ecuador_tz).isoformat()
+
+
 class QuestionRequest(BaseModel):
     question: str
     limit: int = 3
@@ -66,6 +73,9 @@ class DocumentResponse(BaseModel):
     document_id: str
     title: str
     source: str
+    source_type: str | None = None
+    ingested_at_utc: str | None = None
+    ingested_at_ecuador: str | None = None
     job_id: str | None = None
     chunks: int | None = None
     entities: int | None = None
@@ -75,6 +85,13 @@ class DocumentResponse(BaseModel):
 class DeleteResponse(BaseModel):
     document_id: str
     status: str
+
+
+def sort_documents_by_ingest(payloads: list[dict[str, str]]) -> list[dict[str, str]]:
+    return sorted(
+        payloads,
+        key=lambda item: item.get("ingested_at_utc") or item.get("ingested_at_ecuador") or "",
+    )
 
 
 @app.get("/health")
@@ -100,6 +117,8 @@ async def upload_document(
     background_tasks: BackgroundTasks,
     file: UploadFile | None = File(None),
     path: str | None = Form(None),
+    text: str | None = Form(None),
+    title: str | None = Form(None),
     embedding_model: str | None = Form(None),
 ) -> IngestResponse:
     config = load_config()
@@ -116,8 +135,16 @@ async def upload_document(
         document = load_document(temp_path)
     elif path:
         document = load_document(path)
+    elif text:
+        document = Document(
+            id=str(uuid4()),
+            path=title or "inline-text",
+            title=title or "inline-text",
+            text=text,
+        )
     else:
-        raise ValueError("file or path is required")
+        raise ValueError("file, path or text is required")
+    ingested_at_utc, ingested_at_ecuador = current_ingest_timestamp()
 
     def run_ingest() -> None:
         try:
@@ -138,7 +165,10 @@ async def upload_document(
                     "document_id": document.id,
                     "title": document.title,
                     "source": document.path,
+                    "source_type": "text" if text else ("path" if path else "file"),
                     "text": document.text,
+                    "ingested_at_utc": ingested_at_utc,
+                    "ingested_at_ecuador": ingested_at_ecuador,
                     "job_id": job_id,
                     "chunks": str(len(result.chunks)),
                     "entities": str(len(result.entities)),
@@ -186,6 +216,9 @@ def get_document(document_id: str) -> DocumentResponse:
         document_id=normalized_id,
         title=payload.get("title", "unknown"),
         source=payload.get("source", "unknown"),
+        source_type=payload.get("source_type"),
+        ingested_at_utc=payload.get("ingested_at_utc"),
+        ingested_at_ecuador=payload.get("ingested_at_ecuador"),
         job_id=payload.get("job_id"),
         chunks=int(payload.get("chunks", "0")) if payload.get("chunks") else None,
         entities=int(payload.get("entities", "0")) if payload.get("entities") else None,
@@ -217,7 +250,12 @@ def delete_document(document_id: str) -> DeleteResponse:
 
 
 @app.post("/questions", response_model=AskResponse)
-def ask_question(request: QuestionRequest, path: str | None = Query(None)) -> AskResponse:
+def ask_question(
+    request: QuestionRequest,
+    path: str | None = Query(None),
+    scope: str = Query("all"),
+    latest_count: int = Query(5, ge=1, le=50),
+) -> AskResponse:
     config = load_config()
     graph_store = build_graph_store_from_config(config)
     vector_store = build_vector_store_from_config(config)
@@ -235,8 +273,12 @@ def ask_question(request: QuestionRequest, path: str | None = Query(None)) -> As
             model_name=embedding_model_value,
         )
     else:
-        documents = job_store.list_by_prefix("doc:")
-        for payload in documents.values():
+        documents = list(job_store.list_by_prefix("doc:").values())
+        if scope == "latest":
+            documents = sort_documents_by_ingest(documents)[-1:]
+        elif scope == "last_n":
+            documents = sort_documents_by_ingest(documents)[-latest_count:]
+        for payload in documents:
             source = payload.get("source")
             text = payload.get("text")
             document_id = payload.get("document_id")

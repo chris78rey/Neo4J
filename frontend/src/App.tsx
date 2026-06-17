@@ -2,7 +2,17 @@ import { useEffect, useMemo, useState } from 'react'
 import { NavLink, Navigate, Outlet, Route, Routes, useNavigate, useOutletContext } from 'react-router-dom'
 
 type Job = { status: string; detail?: string }
-type DocumentRecord = { title: string; source: string; job_id?: string; chunks?: string; entities?: string; relations?: string }
+type DocumentRecord = {
+  title: string
+  source: string
+  source_type?: string
+  ingested_at_utc?: string
+  ingested_at_ecuador?: string
+  job_id?: string
+  chunks?: string
+  entities?: string
+  relations?: string
+}
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8000'
 
@@ -131,6 +141,10 @@ function IngestPage() {
           <input name="file" type="file" accept=".txt,.md" />
           <label>Or path on server</label>
           <input name="path" value={path} onChange={(e) => setPath(e.target.value)} />
+          <label>Or paste text</label>
+          <textarea name="text" placeholder="Pega aquí el contenido directamente si no quieres subir un archivo." />
+          <label>Text title</label>
+          <input name="text-title" placeholder="Nombre visible del documento" />
           <label>Embedding model</label>
           <input name="ingest-embedding-model" value={embeddingModel} onChange={(e) => setEmbeddingModel(e.target.value)} placeholder="text-embedding-3-large" />
           <button type="submit" disabled={busy}>{busy ? 'Processing…' : 'Ingest'}</button>
@@ -142,6 +156,8 @@ function IngestPage() {
 
 function AskPage() {
   const { busy, askQuestion, chatModel, setChatModel, embeddingModel, setEmbeddingModel, question, setQuestion, askResult, documents } = useOutletContext<AppContext>()
+  const [askScope, setAskScope] = useState<'all' | 'latest' | 'last_n'>('all')
+  const [latestCount, setLatestCount] = useState('5')
   let askSummary = 'No answer yet.'
   try {
     const parsed = JSON.parse(askResult) as { document_count?: number; chunk_count?: number }
@@ -178,6 +194,15 @@ function AskPage() {
           <input value={embeddingModel} onChange={(e) => setEmbeddingModel(e.target.value)} placeholder="text-embedding-3-large" />
           <label>Question</label>
           <textarea name="question" value={question} onChange={(e) => setQuestion(e.target.value)} />
+          <label>Scope</label>
+          <div className="row">
+            <button type="button" className={askScope === 'all' ? 'secondary active' : 'secondary'} onClick={() => setAskScope('all')}>All documents</button>
+            <button type="button" className={askScope === 'latest' ? 'secondary active' : 'secondary'} onClick={() => setAskScope('latest')}>Latest document</button>
+            <button type="button" className={askScope === 'last_n' ? 'secondary active' : 'secondary'} onClick={() => setAskScope('last_n')}>Latest N</button>
+          </div>
+          {askScope === 'last_n' && (
+            <input value={latestCount} onChange={(e) => setLatestCount(e.target.value)} placeholder="5" />
+          )}
           <button type="submit" disabled={busy || Object.keys(documents).length === 0}>{busy ? 'Working…' : 'Ask'}</button>
         </form>
       </article>
@@ -221,6 +246,7 @@ function DocumentsPage() {
                 <strong>{doc.title}</strong>
                 <span>{id}</span>
                 <small>{doc.source}</small>
+                <small>{doc.ingested_at_ecuador || doc.ingested_at_utc || 'no timestamp'}</small>
               </button>
               <button type="button" className="secondary" onClick={() => deleteDocument(id)} disabled={busy}>
                 Remove from library
@@ -292,6 +318,8 @@ function RoutedApp() {
   const [jobId, setJobId] = useState('')
   const [jobStatus, setJobStatus] = useState('idle')
   const [question, setQuestion] = useState('What is the project about?')
+  const [askScope, setAskScope] = useState<'all' | 'latest' | 'last_n'>('all')
+  const [latestCount, setLatestCount] = useState('5')
   const [path, setPath] = useState('')
   const [selectedDoc, setSelectedDoc] = useState<{ id: string; data: DocumentRecord } | null>(null)
   const [chatModel, setChatModel] = useState('deepseek/deepseek-v4-pro')
@@ -377,12 +405,16 @@ function RoutedApp() {
       const data = new FormData()
       const file = (form.elements.namedItem('file') as HTMLInputElement).files?.[0]
       const serverPath = (form.elements.namedItem('path') as HTMLInputElement).value.trim()
+      const textValue = (form.elements.namedItem('text') as HTMLTextAreaElement).value.trim()
+      const textTitle = (form.elements.namedItem('text-title') as HTMLInputElement).value.trim()
       const ingestEmbeddingModel = (form.elements.namedItem('ingest-embedding-model') as HTMLInputElement).value.trim()
-      if (!file && !serverPath) {
-        throw new Error('Choose a file or provide a server path.')
+      if (!file && !serverPath && !textValue) {
+        throw new Error('Choose a file, provide a server path, or paste text.')
       }
       if (file) data.append('file', file)
       if (serverPath) data.append('path', serverPath)
+      if (textValue) data.append('text', textValue)
+      if (textTitle) data.append('title', textTitle)
       if (ingestEmbeddingModel) data.append('embedding_model', ingestEmbeddingModel)
       const payload = await requestJSON('/documents', { method: 'POST', body: data })
       setResult(JSON.stringify(payload, null, 2))
@@ -412,7 +444,12 @@ function RoutedApp() {
       if (!questionValue) {
         throw new Error('Write a question first.')
       }
-      const payload = await requestJSON('/questions', {
+      const latestCountValue = Number.parseInt(latestCount, 10)
+      const params = new URLSearchParams({ scope: askScope })
+      if (askScope === 'last_n' && Number.isFinite(latestCountValue) && latestCountValue > 0) {
+        params.set('latest_count', String(latestCountValue))
+      }
+      const payload = await requestJSON(`/questions?${params.toString()}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: questionValue, limit: 3, model: chatModel, embedding_model: embeddingModel }),
