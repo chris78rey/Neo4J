@@ -13,12 +13,13 @@ def cmd_ingest(args: argparse.Namespace) -> int:
     chunks = build_chunks(document, config.chunk_size, config.chunk_overlap)
     graph_store = build_graph_store_from_config(config)
     vector_store = build_vector_store_from_config(config)
+    embedding_model = config.openrouter_embedding_model or config.embedding_model
     ingest_document(
         document=document,
         chunks=chunks,
         graph_store=graph_store,
         vector_store=vector_store,
-        model_name=config.embedding_model,
+        model_name=embedding_model,
     )
     print(f"document={document.title} chunks={len(chunks)}")
     for chunk in chunks:
@@ -32,15 +33,17 @@ def cmd_ask(args: argparse.Namespace) -> int:
     chunks = build_chunks(document, config.chunk_size, config.chunk_overlap)
     graph_store = build_graph_store_from_config(config)
     vector_store = build_vector_store_from_config(config)
+    embedding_model = config.openrouter_embedding_model or config.embedding_model
+    chat_model = config.openrouter_chat_model or config.llm_model
     ingest_document(
         document=document,
         chunks=chunks,
         graph_store=graph_store,
         vector_store=vector_store,
-        model_name=config.embedding_model,
+        model_name=embedding_model,
     )
     retrieved = retrieve_context(args.question, graph_store, vector_store, limit=args.limit)
-    print(compose_answer(args.question, retrieved))
+    print(compose_answer(args.question, retrieved, model_name=chat_model))
     close = getattr(graph_store, "close", None)
     if callable(close):
         close()
@@ -57,6 +60,9 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         ("QDRANT_URL", config.qdrant_url),
         ("QDRANT_COLLECTION", config.qdrant_collection),
         ("EMBEDDING_MODEL", config.embedding_model),
+        ("OPENROUTER_CHAT_MODEL", config.openrouter_chat_model),
+        ("OPENROUTER_EMBEDDING_MODEL", config.openrouter_embedding_model or config.embedding_model),
+        ("OPENROUTER_API_KEY", "***" if config.openrouter_api_key else ""),
     ]
     print("Config:")
     for key, value in checks:

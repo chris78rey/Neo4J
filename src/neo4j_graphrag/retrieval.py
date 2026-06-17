@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 from .extract import extract_entities
 from .models import Chunk, Entity
+from .openrouter import OpenRouterConfig, enabled, chat as openrouter_chat
 from .store import GraphStore, VectorStore
 
 
@@ -36,12 +37,31 @@ def retrieve_context(query: str, graph_store: GraphStore, vector_store: VectorSt
     return RetrievedContext(chunks=retrieved_chunks, entities=entities)
 
 
-def compose_answer(question: str, retrieved: RetrievedContext) -> str:
+def compose_answer(question: str, retrieved: RetrievedContext, model_name: str | None = None) -> str:
+    context_lines = [f"- [{item.score:.2f}] {item.chunk.text[:160]}" for item in retrieved.chunks]
+    entity_lines = [f"- {entity.name} ({entity.entity_type})" for entity in retrieved.entities]
+    if enabled(OpenRouterConfig()) and model_name:
+        try:
+            prompt = [
+                {
+                    "role": "system",
+                    "content": "You answer questions using the provided context. Be concise and grounded in the context.",
+                },
+                {
+                    "role": "user",
+                    "content": "Question:\n"
+                    + question
+                    + "\n\nContext:\n"
+                    + "\n".join(context_lines)
+                    + ("\n\nEntities:\n" + "\n".join(entity_lines) if entity_lines else ""),
+                },
+            ]
+            return openrouter_chat(prompt, model=model_name)
+        except Exception:
+            pass
     lines = [f"Pregunta: {question}", "Contexto recuperado:"]
-    for item in retrieved.chunks:
-        lines.append(f"- [{item.score:.2f}] {item.chunk.text[:160]}")
-    if retrieved.entities:
+    lines.extend(context_lines)
+    if entity_lines:
         lines.append("Entidades detectadas:")
-        for entity in retrieved.entities:
-            lines.append(f"- {entity.name} ({entity.entity_type})")
+        lines.extend(entity_lines)
     return "\n".join(lines)

@@ -14,6 +14,11 @@ class AppConfig:
     chunk_size: int = int(os.getenv("CHUNK_SIZE", "800"))
     chunk_overlap: int = int(os.getenv("CHUNK_OVERLAP", "120"))
     qdrant_collection: str = os.getenv("QDRANT_COLLECTION", "graphrag_chunks")
+    job_store_path: str = os.getenv("JOB_STORE_PATH", ".neo4j_graphrag_jobs.json")
+    openrouter_api_key: str = os.getenv("OPENROUTER_API_KEY", "")
+    openrouter_base_url: str = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+    openrouter_chat_model: str = os.getenv("OPENROUTER_CHAT_MODEL", "openai/gpt-4o-mini")
+    openrouter_embedding_model: str = os.getenv("OPENROUTER_EMBEDDING_MODEL", "")
 
 
 def load_config() -> AppConfig:
