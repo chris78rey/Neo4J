@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: neo4j-graphrag
+Version: 0.1.0
+Summary: GraphRAG scaffold with Neo4j and Qdrant
+Requires-Python: >=3.11

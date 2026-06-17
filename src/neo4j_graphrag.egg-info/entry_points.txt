@@ -1,0 +1,2 @@
+[console_scripts]
+neo4j-graphrag = neo4j_graphrag.cli:main

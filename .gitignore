@@ -1,0 +1,5 @@
+.env
+repomix-output.xml
+
+# Graphify generated output
+graphify-out/
