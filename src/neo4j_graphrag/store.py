@@ -17,6 +17,9 @@ class GraphStore:
     def upsert_relations(self, relations: list[Relation]) -> None:
         raise NotImplementedError
 
+    def delete_document(self, document_id: str) -> None:
+        raise NotImplementedError
+
     def healthcheck(self) -> bool:
         raise NotImplementedError
 
@@ -61,6 +64,20 @@ class InMemoryGraphStore(GraphStore):
 
     def upsert_relations(self, relations: list[Relation]) -> None:
         self.relations.extend(relations)
+
+    def delete_document(self, document_id: str) -> None:
+        self.documents.pop(document_id, None)
+        chunk_ids = [chunk_id for chunk_id, chunk in self.chunks.items() if chunk.document_id == document_id]
+        for chunk_id in chunk_ids:
+            self.chunks.pop(chunk_id, None)
+        entity_ids = [entity_id for entity_id, entity in self.entities.items() if entity.document_id == document_id]
+        for entity_id in entity_ids:
+            self.entities.pop(entity_id, None)
+        self.relations = [
+            relation
+            for relation in self.relations
+            if relation.source_id not in entity_ids and relation.target_id not in entity_ids
+        ]
 
     def healthcheck(self) -> bool:
         return True
@@ -195,11 +212,13 @@ class Neo4jGraphStore(GraphStore):
         UNWIND $entities AS entity
         MERGE (e:Entity {id: entity.id})
         SET e.name = entity.name,
-            e.entity_type = entity.entity_type
+            e.entity_type = entity.entity_type,
+            e.document_id = entity.document_id
         """
         payload = [
             {
                 "id": entity.id,
+                "document_id": entity.document_id,
                 "name": entity.name,
                 "entity_type": entity.entity_type,
             }
@@ -207,6 +226,22 @@ class Neo4jGraphStore(GraphStore):
         ]
         with self.driver.session() as session:
             session.run(query, entities=payload)
+
+    def delete_document(self, document_id: str) -> None:
+        with self.driver.session() as session:
+            session.run(
+                """
+                MATCH (d:Document {id: $document_id})
+                OPTIONAL MATCH (d)-[:HAS_CHUNK]->(c:Chunk)
+                WITH d, collect(DISTINCT c) AS chunks
+                OPTIONAL MATCH (e:Entity {document_id: $document_id})
+                WITH d, chunks, collect(DISTINCT e) AS entities
+                FOREACH (chunk IN chunks | DETACH DELETE chunk)
+                FOREACH (entity IN entities | DETACH DELETE entity)
+                DETACH DELETE d
+                """,
+                document_id=document_id,
+            )
 
     def upsert_relations(self, relations: list[Relation]) -> None:
         query = """
@@ -227,6 +262,16 @@ class Neo4jGraphStore(GraphStore):
         ]
         with self.driver.session() as session:
             session.run(query, relations=payload)
+
+    def delete_document(self, document_id: str) -> None:
+        with self.driver.session() as session:
+            session.run(
+                """
+                MATCH (d:Document {id: $document_id})
+                DETACH DELETE d
+                """,
+                document_id=document_id,
+            )
 
 
 class QdrantVectorStore(VectorStore):
@@ -301,6 +346,23 @@ class QdrantVectorStore(VectorStore):
     def healthcheck(self) -> bool:
         _ = self.client.get_collections()
         return True
+
+    def delete_document(self, document_id: str) -> None:
+        from qdrant_client.http import models as rest
+
+        self.client.delete(
+            collection_name=self.collection_name,
+            points_selector=rest.FilterSelector(
+                filter=rest.Filter(
+                    must=[
+                        rest.FieldCondition(
+                            key="document_id",
+                            match=rest.MatchValue(value=document_id),
+                        )
+                    ]
+                )
+            ),
+        )
 
     def probe(self) -> str:
         self.ensure_collection(3)

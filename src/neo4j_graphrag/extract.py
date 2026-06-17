@@ -34,7 +34,7 @@ def extract_entities(chunks: list[Chunk]) -> list[Entity]:
             if name.isupper() and len(name) <= 4:
                 continue
             entity_id = name.lower().replace(" ", "_")
-            seen.setdefault(entity_id, Entity(id=entity_id, name=name))
+            seen.setdefault(entity_id, Entity(id=entity_id, document_id=chunk.document_id, name=name))
     return list(seen.values())
 
 

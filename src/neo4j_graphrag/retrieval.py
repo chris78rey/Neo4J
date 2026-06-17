@@ -20,21 +20,79 @@ class RetrievedContext:
     entities: list[Entity]
 
 
-def retrieve(query: str, graph_store: GraphStore, vector_store: VectorStore, limit: int = 3) -> list[RetrievedChunk]:
+def retrieve(
+    query: str,
+    graph_store: GraphStore,
+    vector_store: VectorStore,
+    limit: int = 3,
+    document_id: str | None = None,
+) -> list[RetrievedChunk]:
     candidates = vector_store.search(query, limit=limit)
+    if document_id:
+        candidates = [candidate for candidate in candidates if candidate[0].document_id == document_id]
     if candidates:
         return [RetrievedChunk(chunk=chunk, score=score) for chunk, score in candidates]
 
     fallback: list[RetrievedChunk] = []
-    for chunk in graph_store.list_chunks()[:limit]:
+    fallback_chunks = graph_store.list_chunks()
+    if document_id:
+        fallback_chunks = [chunk for chunk in fallback_chunks if chunk.document_id == document_id]
+    for chunk in fallback_chunks[:limit]:
         fallback.append(RetrievedChunk(chunk=chunk, score=0.0))
     return fallback
 
 
-def retrieve_context(query: str, graph_store: GraphStore, vector_store: VectorStore, limit: int = 3) -> RetrievedContext:
-    retrieved_chunks = retrieve(query, graph_store, vector_store, limit=limit)
+def retrieve_context(
+    query: str,
+    graph_store: GraphStore,
+    vector_store: VectorStore,
+    limit: int = 3,
+    document_id: str | None = None,
+) -> RetrievedContext:
+    retrieved_chunks = retrieve(query, graph_store, vector_store, limit=limit, document_id=document_id)
     entities = extract_entities([item.chunk for item in retrieved_chunks])
     return RetrievedContext(chunks=retrieved_chunks, entities=entities)
+
+
+def looks_english(text: str) -> bool:
+    lowered = text.lower()
+    english_markers = [
+        " the ",
+        " and ",
+        " project ",
+        " database ",
+        " answer",
+        " involving",
+        " management",
+    ]
+    spanish_markers = [
+        " el ",
+        " la ",
+        " proyecto ",
+        " base de datos ",
+        " respuesta",
+        " involucr",
+        " gestión",
+    ]
+    english_hits = sum(1 for marker in english_markers if marker in lowered)
+    spanish_hits = sum(1 for marker in spanish_markers if marker in lowered)
+    return english_hits > spanish_hits
+
+
+def translate_to_spanish(text: str, model_name: str | None = None) -> str:
+    if not enabled(OpenRouterConfig()) or not model_name:
+        return text
+    try:
+        prompt = [
+            {
+                "role": "system",
+                "content": "Traduce al español manteniendo el sentido original. No agregues contenido nuevo.",
+            },
+            {"role": "user", "content": text},
+        ]
+        return openrouter_chat(prompt, model=model_name)
+    except Exception:
+        return text
 
 
 def compose_answer(question: str, retrieved: RetrievedContext, model_name: str | None = None) -> str:
@@ -45,18 +103,25 @@ def compose_answer(question: str, retrieved: RetrievedContext, model_name: str |
             prompt = [
                 {
                     "role": "system",
-                    "content": "You answer questions using the provided context. Be concise and grounded in the context.",
+                    "content": (
+                        "Responde siempre en español. Si tu borrador sale en inglés, "
+                        "traduce toda la respuesta al español antes de devolverla. "
+                        "Usa solo el contexto proporcionado, sé breve, claro y no inventes información."
+                    ),
                 },
                 {
                     "role": "user",
-                    "content": "Question:\n"
+                    "content": "Pregunta:\n"
                     + question
-                    + "\n\nContext:\n"
+                    + "\n\nContexto:\n"
                     + "\n".join(context_lines)
-                    + ("\n\nEntities:\n" + "\n".join(entity_lines) if entity_lines else ""),
+                    + ("\n\nEntidades:\n" + "\n".join(entity_lines) if entity_lines else ""),
                 },
             ]
-            return openrouter_chat(prompt, model=model_name)
+            answer = openrouter_chat(prompt, model=model_name)
+            if looks_english(answer):
+                answer = translate_to_spanish(answer, model_name=model_name)
+            return answer
         except Exception:
             pass
     lines = [f"Pregunta: {question}", "Contexto recuperado:"]

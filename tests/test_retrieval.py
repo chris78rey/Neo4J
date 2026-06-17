@@ -20,6 +20,29 @@ def test_retrieve_returns_relevant_chunk(tmp_path):
     assert [entity.name for entity in retrieved.entities] == ["Neo4j", "Qdrant"]
 
 
+def test_retrieve_context_filters_to_document(tmp_path):
+    first_path = tmp_path / "neo4j.txt"
+    first_path.write_text("Neo4j stores graph relationships.", encoding="utf-8")
+    second_path = tmp_path / "oracle.txt"
+    second_path.write_text("Oracle APEX modernizes hospital workflows.", encoding="utf-8")
+
+    first_document = load_document(str(first_path))
+    second_document = load_document(str(second_path))
+    first_chunks = build_chunks(first_document, chunk_size=30, overlap=0)
+    second_chunks = build_chunks(second_document, chunk_size=30, overlap=0)
+
+    graph_store = InMemoryGraphStore()
+    vector_store = InMemoryVectorStore()
+    ingest_document(first_document, first_chunks, graph_store, vector_store, model_name="stub")
+    ingest_document(second_document, second_chunks, graph_store, vector_store, model_name="stub")
+
+    retrieved = retrieve_context("modernizes workflows", graph_store, vector_store, document_id=second_document.id)
+
+    assert retrieved.chunks
+    assert all(item.chunk.document_id == second_document.id for item in retrieved.chunks)
+    assert "oracle" in retrieved.chunks[0].chunk.text.lower()
+
+
 def test_compose_answer_includes_question():
     from neo4j_graphrag.retrieval import RetrievedContext
 

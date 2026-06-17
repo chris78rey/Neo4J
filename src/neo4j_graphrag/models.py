@@ -21,6 +21,7 @@ class Chunk:
 @dataclass(frozen=True)
 class Entity:
     id: str
+    document_id: str
     name: str
     entity_type: str = "unknown"
 
