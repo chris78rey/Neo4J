@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from .embeddings import build_embeddings
-from .extract import extract_entities, extract_relations, extract_signatures, extract_structured_fields
+from .extract import extract_entities, extract_relations, extract_semantic_entities, extract_signatures, extract_structured_fields
 from .models import Chunk, Document, Entity, Relation
 from .store import GraphStore, VectorStore
 
@@ -34,7 +34,21 @@ class Pipeline:
         self.graph_store.upsert_document(document)
         self.graph_store.upsert_chunks(chunks)
         entities = extract_entities(chunks)
+        semantic_entities = extract_semantic_entities(document.text, document.id)
+        entities.extend(semantic_entities)
         relations = extract_relations(entities)
+        anchor_entity = entities[0] if entities else None
+        if anchor_entity:
+            for semantic_entity in semantic_entities:
+                relations.append(
+                    Relation(
+                        source_id=anchor_entity.id,
+                        target_id=semantic_entity.id,
+                        relation_type="HAS_SEMANTIC_FIELD",
+                        confidence=1.0,
+                        document_id=document.id,
+                    )
+                )
         if entities:
             self.graph_store.upsert_entities(entities)
         if relations:

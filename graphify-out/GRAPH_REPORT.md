@@ -1,16 +1,16 @@
 # Graph Report - Neo4J  (2026-06-17)
 
 ## Corpus Check
-- 53 files · ~10,574 words
+- 53 files · ~10,810 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 379 nodes · 806 edges · 39 communities (33 shown, 6 thin omitted)
+- 382 nodes · 817 edges · 38 communities (33 shown, 5 thin omitted)
 - Extraction: 83% EXTRACTED · 17% INFERRED · 0% AMBIGUOUS · INFERRED: 140 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `74364808`
+- Built from commit: `03dfd750`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,16 +36,15 @@
 - [[_COMMUNITY_Community 35|Community 35]]
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
-- [[_COMMUNITY_Community 38|Community 38]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Document` - 34 edges
 2. `Chunk` - 34 edges
 3. `GraphStore` - 31 edges
-4. `InMemoryGraphStore` - 30 edges
-5. `Entity` - 29 edges
-6. `VectorStore` - 25 edges
-7. `Relation` - 24 edges
+4. `Entity` - 30 edges
+5. `InMemoryGraphStore` - 30 edges
+6. `Relation` - 25 edges
+7. `VectorStore` - 25 edges
 8. `InMemoryVectorStore` - 24 edges
 9. `ask_question()` - 20 edges
 10. `Neo4jGraphStore` - 20 edges
@@ -65,15 +64,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (39 total, 6 thin omitted)
+## Communities (38 total, 5 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
 Nodes (15): GraphRAG completo desde el inicio con embeddings, LLM y grafo conectado, Neo4j Community + Qdrant + LLM externo + scripts Python/Go para construir GraphRAG, Bajo consumo: pocos documentos, chunks pequeños, embeddings por lotes y consultas controladas, GraphRAG completo desde el inicio con embeddings, LLM y grafo conectado, GraphRAG funcional: documentos, embeddings, LLM, búsqueda vectorial y relaciones en Neo4j, GraphRAG funcional: documentos, embeddings, LLM, búsqueda vectorial y relaciones en Neo4j, Documentos iniciales: PDF, Word o TXT de un solo tema, Flujo de procesamiento: carga directa documento->texto->chunks->embeddings->Qdrant->relaciones básicas Neo4j (+7 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.19
-Nodes (23): ingest_document(), Pipeline, PipelineResult, extract_entities(), extract_relations(), extract_signatures(), extract_structured_fields(), Chunk (+15 more)
+Cohesion: 0.18
+Nodes (24): ingest_document(), Pipeline, PipelineResult, extract_entities(), extract_relations(), extract_semantic_entities(), extract_signatures(), extract_structured_fields() (+16 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.57
@@ -84,8 +83,8 @@ Cohesion: 0.38
 Nodes (7): Proceso de carga directa, Modelo simple de grafo, Función de LLM para responder preguntas, Modelo LLM económico chino, Neo4j, OpenRouter, Qdrant
 
 ### Community 21 - "Community 21"
-Cohesion: 0.12
-Nodes (42): BackgroundTasks, BaseModel, Namespace, ask_question(), AskResponse, current_ingest_timestamp(), delete_document(), DeleteResponse (+34 more)
+Cohesion: 0.16
+Nodes (25): BackgroundTasks, BaseModel, ask_question(), AskResponse, current_ingest_timestamp(), DeleteResponse, DocumentResponse, documents_metadata_by_id() (+17 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.11
@@ -101,7 +100,7 @@ Nodes (10): Arquitectura propuesta, Backend, Flujo funcional, Frontend, Jobs, Ob
 
 ### Community 26 - "Community 26"
 Cohesion: 0.07
-Nodes (7): GraphStore, InMemoryGraphStore, Neo4jGraphStore, Chunk, Document, Entity, Relation
+Nodes (7): GraphStore, Neo4jGraphStore, QdrantVectorStore, Chunk, Document, Entity, Relation
 
 ### Community 27 - "Community 27"
 Cohesion: 0.11
@@ -120,12 +119,12 @@ Cohesion: 0.14
 Nodes (3): AppContext, DocumentRecord, Job
 
 ### Community 33 - "Community 33"
-Cohesion: 0.16
-Nodes (29): Any, build_embeddings(), is_signature_question(), chat(), embeddings(), enabled(), OpenRouterConfig, _request() (+21 more)
+Cohesion: 0.19
+Nodes (25): Any, build_embeddings(), is_signature_question(), chat(), embeddings(), enabled(), OpenRouterConfig, _request() (+17 more)
 
 ### Community 34 - "Community 34"
-Cohesion: 0.12
-Nodes (7): ArgumentParser, build_parser(), main(), InMemoryVectorStore, test_doctor_command_registered(), test_inmemory_healthchecks(), test_inmemory_probes()
+Cohesion: 0.09
+Nodes (30): ArgumentParser, Namespace, delete_document(), health(), build_parser(), cmd_ask(), cmd_doctor(), cmd_ingest() (+22 more)
 
 ### Community 35 - "Community 35"
 Cohesion: 0.20
@@ -134,16 +133,16 @@ Nodes (9): 1. Validación de ingesta, 2. Recuperación híbrida, 3. Consulta por
 ## Knowledge Gaps
 - **87 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+82 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Document` connect `Community 21` to `Community 1`, `Community 26`, `Community 34`, `Community 38`?**
+- **Why does `Document` connect `Community 21` to `Community 1`, `Community 34`, `Community 26`?**
   _High betweenness centrality (0.049) - this node is a cross-community bridge._
-- **Why does `get_job_store()` connect `Community 21` to `Community 22`?**
+- **Why does `get_job_store()` connect `Community 21` to `Community 34`, `Community 22`?**
   _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **Why does `InMemoryGraphStore` connect `Community 26` to `Community 1`, `Community 34`, `Community 21`, `Community 33`?**
+- **Why does `InMemoryGraphStore` connect `Community 34` to `Community 1`, `Community 26`, `Community 21`?**
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Are the 26 inferred relationships involving `Document` (e.g. with `BackgroundTasks` and `AskResponse`) actually correct?**
   _`Document` has 26 INFERRED edges - model-reasoned connections that need verification._
@@ -151,5 +150,5 @@ _Questions this graph is uniquely positioned to answer:_
   _`Chunk` has 26 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 14 inferred relationships involving `GraphStore` (e.g. with `Pipeline` and `PipelineResult`) actually correct?**
   _`GraphStore` has 14 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 6 inferred relationships involving `InMemoryGraphStore` (e.g. with `ArgumentParser` and `Namespace`) actually correct?**
-  _`InMemoryGraphStore` has 6 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 23 inferred relationships involving `Entity` (e.g. with `Pipeline` and `PipelineResult`) actually correct?**
+  _`Entity` has 23 INFERRED edges - model-reasoned connections that need verification._

@@ -207,6 +207,8 @@ def get_structured_answer(question: str, document_payloads: list[dict[str, str]]
     if not document_payloads:
         return None
     lines: list[str] = []
+    signature_mode = any(key in lowered for key in ["quién firm", "quien firm", "aprob", "elabor", "firmante"])
+    structured_mode = any(key in lowered for key in ["fecha", "instituci", "presupuesto", "plazo", "garant", "proyecto"])
     for payload in document_payloads:
         title = payload.get("title", "documento")
         try:
@@ -217,13 +219,17 @@ def get_structured_answer(question: str, document_payloads: list[dict[str, str]]
             structured_fields = json.loads(payload.get("structured_fields") or "{}")
         except Exception:
             structured_fields = {}
-        if any(key in lowered for key in ["quién firm", "quien firm", "aprob", "elabor", "firmante"]):
+        if signature_mode:
             for role, name in signatures.items():
                 lines.append(f"- {title}: {role} -> {name}")
-        if any(key in lowered for key in ["fecha", "instituci", "presupuesto", "plazo", "garant", "proyecto"]):
+        if structured_mode and not signature_mode:
             for key, value in structured_fields.items():
                 lines.append(f"- {title}: {key} -> {value}")
-    return "Datos estructurados detectados:\n" + "\n".join(lines) if lines else None
+    if not lines:
+        return None
+    if signature_mode:
+        return "Firmas o roles detectados:\n" + "\n".join(lines)
+    return "Datos estructurados detectados:\n" + "\n".join(lines)
 
 
 def looks_english(text: str) -> bool:

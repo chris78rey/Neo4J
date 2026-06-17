@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/api.py": {
-    "mtime": 1781731484.4061937,
-    "ast_hash": "ca63dc9855e76b0fad3cf76bd8506306",
+    "mtime": 1781731613.4443116,
+    "ast_hash": "d43d8c920dbccff867b2ea1dc02c618a",
     "semantic_hash": ""
   },
   "tests/test_api.py": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "frontend/src/App.tsx": {
-    "mtime": 1781731493.3261993,
-    "ast_hash": "28b772130deab104c4c7b9a5ccbc5ef8",
+    "mtime": 1781731617.7054014,
+    "ast_hash": "d11bc2c0ef39bd6641c264dc22d6ec72",
     "semantic_hash": ""
   },
   "frontend/src/main.tsx": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "docs/plan_grafos_embeddings.md": {
-    "mtime": 1781731497.4112017,
-    "ast_hash": "271d04639987b555f4dbcd98f1bdde85",
+    "mtime": 1781731624.9045517,
+    "ast_hash": "8621dd5f4c93bc03361ecb1c101bff05",
     "semantic_hash": ""
   }
 }

@@ -97,6 +97,29 @@ def extract_structured_fields(text: str) -> dict[str, str]:
     return fields
 
 
+def extract_semantic_entities(text: str, document_id: str) -> list[Entity]:
+    semantic_entities: list[Entity] = []
+    for key, name in extract_signatures(text).items():
+        semantic_entities.append(
+            Entity(
+                id=f"{document_id}:{key}:{name.lower().replace(' ', '_')}",
+                document_id=document_id,
+                name=name,
+                entity_type=key,
+            )
+        )
+    for key, value in extract_structured_fields(text).items():
+        semantic_entities.append(
+            Entity(
+                id=f"{document_id}:{key}:{value.lower().replace(' ', '_')[:60]}",
+                document_id=document_id,
+                name=value,
+                entity_type=key,
+            )
+        )
+    return semantic_entities
+
+
 def is_signature_question(question: str) -> bool:
     lowered = question.lower()
     markers = [

@@ -13,7 +13,7 @@ from pydantic import Field
 
 from .config import load_config
 from .connectors import ingest_document
-from .extract import is_signature_question
+from .extract import is_signature_question, is_structured_question
 from .job_store import get_job_store
 from .ingest import build_chunks, load_document
 from .models import Document
@@ -54,6 +54,7 @@ class QuestionRequest(BaseModel):
 
 class IngestResponse(BaseModel):
     job_id: str
+    document_id: str
     document_title: str
     chunks: int
     entities: int
@@ -179,16 +180,17 @@ async def upload_document(
                 vector_store=vector_store,
                 model_name=embedding_model,
             )
+            enriched_document = result.document
             job_store.set(
                 f"doc:{document.id}",
                 {
-                    "document_id": document.id,
-                    "title": document.title,
-                    "source": document.path,
+                    "document_id": enriched_document.id,
+                    "title": enriched_document.title,
+                    "source": enriched_document.path,
                     "source_type": "text" if text else ("path" if path else "file"),
-                    "text": document.text,
-                    "signatures": json.dumps(document.metadata.get("signatures", {}), ensure_ascii=False),
-                    "structured_fields": json.dumps(document.metadata.get("structured_fields", {}), ensure_ascii=False),
+                    "text": enriched_document.text,
+                    "signatures": json.dumps(enriched_document.metadata.get("signatures", {}), ensure_ascii=False),
+                    "structured_fields": json.dumps(enriched_document.metadata.get("structured_fields", {}), ensure_ascii=False),
                     "ingested_at_utc": ingested_at_utc,
                     "ingested_at_ecuador": ingested_at_ecuador,
                     "job_id": job_id,
@@ -214,6 +216,7 @@ async def upload_document(
 
     return IngestResponse(
         job_id=job_id,
+        document_id=document.id,
         document_title=document.title,
         chunks=0,
         entities=0,
@@ -286,7 +289,7 @@ def ask_question(
     embedding_model_value = request.embedding_model or config.openrouter_embedding_model or config.embedding_model
     chat_model = request.model or config.openrouter_chat_model or config.llm_model
     job_store = get_job_store(config.job_store_path)
-    if not path:
+    if not path and (is_structured_question(request.question) or is_signature_question(request.question)):
         docs = list(job_store.list_by_prefix("doc:").values())
         structured_answer = get_structured_answer(request.question, docs)
         if structured_answer:

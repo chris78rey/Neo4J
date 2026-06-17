@@ -86,6 +86,7 @@ def test_signature_question_returns_roles():
     assert response.status_code == 200
     payload = response.json()
     assert "Firmas o roles detectados" in payload["answer"]
+    assert "Cbop. Marco Ortiz" in payload["answer"]
 
 
 def test_ask_includes_explanation():
@@ -97,3 +98,23 @@ def test_ask_includes_explanation():
     assert response.status_code == 200
     payload = response.json()
     assert "explanation" in payload
+
+
+def test_document_detail_includes_structured_nodes():
+    response = client.post(
+        "/documents",
+        files={"file": ("doc.txt", b"Fecha: 10 de Junio 2026\nElaborado por: Cbop. Marco Ortiz", "text/plain")},
+        data={"embedding_model": "text-embedding-3-large"},
+    )
+    assert response.status_code == 200
+    document_id = response.json()["document_id"]
+
+    payload = {}
+    for _ in range(20):
+        detail = client.get(f"/documents/{document_id}")
+        assert detail.status_code == 200
+        payload = detail.json()
+        if payload.get("structured_fields") or payload.get("signatures"):
+            break
+    assert payload["structured_fields"]
+    assert payload["signatures"]

@@ -1,7 +1,7 @@
 # Graph Report - Neo4J  (2026-06-17)
 
 ## Corpus Check
-- 53 files · ~10,567 words
+- 53 files · ~10,574 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

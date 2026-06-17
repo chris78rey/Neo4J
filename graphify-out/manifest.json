@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/connectors.py": {
-    "mtime": 1781731466.064182,
-    "ast_hash": "8b16e6da7ca045d64cb8c60068d646bb",
+    "mtime": 1781731777.078343,
+    "ast_hash": "d9847e252bf4c29503a83679f47e1f28",
     "semantic_hash": ""
   },
   "tests/test_pipeline.py": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/retrieval.py": {
-    "mtime": 1781731478.77519,
-    "ast_hash": "3a0763cf872230140d7cb380cc593e1e",
+    "mtime": 1781732295.522151,
+    "ast_hash": "93ed480ddfc9c88ae2f3f040a4596681",
     "semantic_hash": ""
   },
   "tests/test_retrieval.py": {
@@ -160,13 +160,13 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/extract.py": {
-    "mtime": 1781723804.20306,
-    "ast_hash": "5ceff45d1d27461d3ac3d9df584e44a7",
+    "mtime": 1781731761.2900846,
+    "ast_hash": "c2e2ff3d3821f87c93af74fb917b4e31",
     "semantic_hash": ""
   },
   "tests/test_extract.py": {
-    "mtime": 1781723822.4520824,
-    "ast_hash": "b0e3070f807b7802257899055912a9bd",
+    "mtime": 1781731782.631432,
+    "ast_hash": "e905257a235aa30ff4505cc11beee3f6",
     "semantic_hash": ""
   },
   "tests/test_doctor.py": {
@@ -195,13 +195,13 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/api.py": {
-    "mtime": 1781731613.4443116,
-    "ast_hash": "d43d8c920dbccff867b2ea1dc02c618a",
+    "mtime": 1781732225.731592,
+    "ast_hash": "c05af300806883913f159c99fb0e186d",
     "semantic_hash": ""
   },
   "tests/test_api.py": {
-    "mtime": 1781731201.9459867,
-    "ast_hash": "913e274c3a81bc0c34617de47696727e",
+    "mtime": 1781732118.4526267,
+    "ast_hash": "c0c8d32e4c23eb9591986620888406d2",
     "semantic_hash": ""
   },
   "tests/test_index.py": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "docs/plan_grafos_embeddings.md": {
-    "mtime": 1781731624.9045517,
-    "ast_hash": "8621dd5f4c93bc03361ecb1c101bff05",
+    "mtime": 1781731789.8695474,
+    "ast_hash": "f8ff43822d4b90f3252e4358e4a36234",
     "semantic_hash": ""
   }
 }

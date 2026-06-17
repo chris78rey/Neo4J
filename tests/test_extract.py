@@ -1,4 +1,4 @@
-from neo4j_graphrag.extract import extract_entities, extract_relations, extract_signatures, extract_structured_fields, is_signature_question, is_structured_question
+from neo4j_graphrag.extract import extract_entities, extract_relations, extract_semantic_entities, extract_signatures, extract_structured_fields, is_signature_question, is_structured_question
 from neo4j_graphrag.ingest import build_chunks, load_document
 
 
@@ -49,6 +49,23 @@ def test_extract_structured_fields():
     assert fields["project_name"] == "Proyecto X"
     assert "$ 219.420,00" in fields["budget"]
     assert "137 días" in fields["execution_deadline"]
+
+
+def test_extract_semantic_entities():
+    text = """
+    Fecha: 10 de Junio 2026
+    Institución: HOSPITAL DE ESPECIALIDADES FUERZAS ARMADAS No1
+    Elaborado por: Cbop. Marco Ortiz
+    """
+    entities = extract_semantic_entities(text, "doc-1")
+    names = {entity.name for entity in entities}
+    types = {entity.entity_type for entity in entities}
+    assert "10 de Junio 2026" in names
+    assert "HOSPITAL DE ESPECIALIDADES FUERZAS ARMADAS No1" in names
+    assert "Cbop. Marco Ortiz" in names
+    assert "date" in types
+    assert "institution" in types
+    assert "author" in types
 
 
 def test_structured_question_detection():

@@ -30,7 +30,7 @@ Checklist para ir ejecutando de forma incremental. La idea es no desaprovechar l
 
 ## 4. Explotación del grafo
 
-- [ ] Crear nodos semánticos para actores, fases, presupuesto y requisitos.
+- [x] Crear nodos semánticos para actores, fases, presupuesto y requisitos.
 - [x] Conectar documentos con entidades clave y relaciones útiles.
 - [x] Permitir expansión de contexto por entidades relacionadas.
 - [x] Permitir navegación por documento -> entidad -> relación -> otro documento.
