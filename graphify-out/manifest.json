@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "docs/plan_grafos_embeddings.md": {
-    "mtime": 1781741977.49729,
-    "ast_hash": "a270b09da9d977c0ec45c7c6239298bd",
+    "mtime": 1781742133.0561023,
+    "ast_hash": "aad394e21680a42046e70c61f18ab76b",
     "semantic_hash": ""
   },
   "tests/test_validation_corpus.py": {
@@ -282,6 +282,11 @@
   "scripts/run_validation_corpus.sh": {
     "mtime": 1781741970.6013007,
     "ast_hash": "9674c92332d13bf7b91b693207c5d95a",
+    "semantic_hash": ""
+  },
+  "scripts/run_validation_cycle.sh": {
+    "mtime": 1781742124.9131098,
+    "ast_hash": "edad36221bc35fe93de44ac3eafe1bd5",
     "semantic_hash": ""
   }
 }

@@ -87,3 +87,4 @@ Checklist para ir ejecutando de forma incremental. La idea es no desaprovechar l
 - [x] Verificar que ese texto ingresa a grafo y embeddings.
 - [x] Verificar respuestas estructuradas sobre firma, fecha, institución, presupuesto y plazo.
 - [x] Exponer la ejecución de este corpus como comando o job reutilizable.
+- [x] Exponer un ciclo único que valide, refresque Graphify y stagee artefactos.

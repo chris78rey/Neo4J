@@ -562,6 +562,34 @@
       "norm_label": "refresh_graphify.sh script"
     },
     {
+      "label": "run_validation_corpus.sh",
+      "file_type": "code",
+      "source_file": "scripts/run_validation_corpus.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_run_validation_corpus",
+      "community": 26,
+      "norm_label": "run_validation_corpus.sh"
+    },
+    {
+      "label": "run_validation_corpus.sh script",
+      "file_type": "code",
+      "source_file": "scripts/run_validation_corpus.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "home_crrb_codex_projects_neo4j_scripts_run_validation_corpus_sh__entry",
+      "community": 26,
+      "norm_label": "run_validation_corpus.sh script"
+    },
+    {
       "label": "stage_graphify.sh",
       "file_type": "code",
       "source_file": "scripts/stage_graphify.sh",
@@ -756,7 +784,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_health",
-      "community": 21,
+      "community": 34,
       "norm_label": "health()"
     },
     {
@@ -896,7 +924,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_cmd_doctor",
-      "community": 21,
+      "community": 34,
       "norm_label": "cmd_doctor()"
     },
     {
@@ -1056,7 +1084,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "neo4j_graphrag_connectors_ingest_document",
-      "community": 34,
+      "community": 1,
       "norm_label": "ingest_document()"
     },
     {
@@ -1766,7 +1794,7 @@
       "source_location": "L209",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_explain_retrieval",
-      "community": 33,
+      "community": 21,
       "norm_label": "explain_retrieval()"
     },
     {
@@ -1816,7 +1844,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "neo4j_graphrag_store",
-      "community": 1,
+      "community": 34,
       "norm_label": "store.py"
     },
     {
@@ -1826,7 +1854,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore",
-      "community": 1,
+      "community": 38,
       "norm_label": "graphstore"
     },
     {
@@ -1926,7 +1954,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_count_document_chunks",
-      "community": 1,
+      "community": 38,
       "norm_label": ".count_document_chunks()"
     },
     {
@@ -1956,7 +1984,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_delete_document",
-      "community": 1,
+      "community": 38,
       "norm_label": ".delete_document()"
     },
     {
@@ -1966,7 +1994,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_healthcheck",
-      "community": 1,
+      "community": 38,
       "norm_label": ".healthcheck()"
     },
     {
@@ -1976,7 +2004,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_probe",
-      "community": 1,
+      "community": 38,
       "norm_label": ".probe()"
     },
     {
@@ -2106,7 +2134,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_list_relations",
-      "community": 38,
+      "community": 34,
       "norm_label": ".list_relations()"
     },
     {
@@ -2276,7 +2304,7 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_close",
-      "community": 21,
+      "community": 34,
       "norm_label": ".close()"
     },
     {
@@ -2486,7 +2514,7 @@
       "source_location": "L460",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_graph_store_from_config",
-      "community": 21,
+      "community": 34,
       "norm_label": "build_graph_store_from_config()"
     },
     {
@@ -2496,7 +2524,7 @@
       "source_location": "L469",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_vector_store_from_config",
-      "community": 21,
+      "community": 34,
       "norm_label": "build_vector_store_from_config()"
     },
     {
@@ -2666,7 +2694,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "tests_test_extract_test_extract_entities_and_relations",
-      "community": 34,
+      "community": 1,
       "norm_label": "test_extract_entities_and_relations()"
     },
     {
@@ -2716,7 +2744,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "tests_test_extract_test_structured_question_detection",
-      "community": 1,
+      "community": 21,
       "norm_label": "test_structured_question_detection()"
     },
     {
@@ -2806,7 +2834,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_pipeline",
-      "community": 1,
+      "community": 34,
       "norm_label": "test_pipeline.py"
     },
     {
@@ -2906,7 +2934,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_validation_corpus",
-      "community": 1,
+      "community": 34,
       "norm_label": "test_validation_corpus.py"
     },
     {
@@ -4514,6 +4542,16 @@
       "confidence_score": 1.0,
       "source": "scripts_refresh_graphify",
       "target": "home_crrb_codex_projects_neo4j_scripts_refresh_graphify_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/run_validation_corpus.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_run_validation_corpus",
+      "target": "home_crrb_codex_projects_neo4j_scripts_run_validation_corpus_sh__entry",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6692,9 +6730,9 @@
       "source_file": "tests/test_validation_corpus.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_validation_corpus",
-      "target": "neo4j_graphrag_connectors",
-      "confidence_score": 1.0
+      "target": "neo4j_graphrag_connectors"
     },
     {
       "relation": "references",
@@ -8095,9 +8133,9 @@
       "source_file": "tests/test_validation_corpus.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_validation_corpus",
-      "target": "neo4j_graphrag_ingest",
-      "confidence_score": 1.0
+      "target": "neo4j_graphrag_ingest"
     },
     {
       "relation": "calls",
@@ -9859,9 +9897,9 @@
       "source_file": "tests/test_validation_corpus.py",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_validation_corpus",
-      "target": "neo4j_graphrag_retrieval",
-      "confidence_score": 1.0
+      "target": "neo4j_graphrag_retrieval"
     },
     {
       "relation": "references",
@@ -10425,9 +10463,9 @@
       "source_file": "tests/test_validation_corpus.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_validation_corpus",
-      "target": "neo4j_graphrag_store",
-      "confidence_score": 1.0
+      "target": "neo4j_graphrag_store"
     },
     {
       "relation": "references",
@@ -11952,9 +11990,9 @@
       "source_file": "tests/test_validation_corpus.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_validation_corpus",
-      "target": "tests_test_validation_corpus_test_validation_corpus_ingests_and_answers",
-      "confidence_score": 1.0
+      "target": "tests_test_validation_corpus_test_validation_corpus_ingests_and_answers"
     },
     {
       "relation": "contains",
@@ -12032,9 +12070,9 @@
       "source_file": "docs/plan_grafos_embeddings.md",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_plan_grafos_embeddings_plan_de_aprovechamiento_de_grafos_y_embeddings",
-      "target": "docs_plan_grafos_embeddings_10_corpus_de_validaci\u00f3n",
-      "confidence_score": 1.0
+      "target": "docs_plan_grafos_embeddings_10_corpus_de_validaci\u00f3n"
     },
     {
       "relation": "contains",

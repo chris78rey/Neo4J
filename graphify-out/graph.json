@@ -590,6 +590,34 @@
       "norm_label": "run_validation_corpus.sh script"
     },
     {
+      "label": "run_validation_cycle.sh",
+      "file_type": "code",
+      "source_file": "scripts/run_validation_cycle.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "scripts_run_validation_cycle",
+      "community": 45,
+      "norm_label": "run_validation_cycle.sh"
+    },
+    {
+      "label": "run_validation_cycle.sh script",
+      "file_type": "code",
+      "source_file": "scripts/run_validation_cycle.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "home_crrb_codex_projects_neo4j_scripts_run_validation_cycle_sh__entry",
+      "community": 45,
+      "norm_label": "run_validation_cycle.sh script"
+    },
+    {
       "label": "stage_graphify.sh",
       "file_type": "code",
       "source_file": "scripts/stage_graphify.sh",
@@ -784,7 +812,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "neo4j_graphrag_api_health",
-      "community": 34,
+      "community": 21,
       "norm_label": "health()"
     },
     {
@@ -884,7 +912,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli",
-      "community": 34,
+      "community": 21,
       "norm_label": "cli.py"
     },
     {
@@ -894,7 +922,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_cmd_ingest",
-      "community": 34,
+      "community": 21,
       "norm_label": "cmd_ingest()"
     },
     {
@@ -904,7 +932,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "namespace",
-      "community": 34,
+      "community": 21,
       "norm_label": "namespace"
     },
     {
@@ -914,7 +942,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_cmd_ask",
-      "community": 34,
+      "community": 21,
       "norm_label": "cmd_ask()"
     },
     {
@@ -924,7 +952,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_cmd_doctor",
-      "community": 34,
+      "community": 21,
       "norm_label": "cmd_doctor()"
     },
     {
@@ -934,7 +962,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_build_parser",
-      "community": 34,
+      "community": 21,
       "norm_label": "build_parser()"
     },
     {
@@ -944,7 +972,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "argumentparser",
-      "community": 34,
+      "community": 21,
       "norm_label": "argumentparser"
     },
     {
@@ -954,7 +982,7 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "neo4j_graphrag_cli_main",
-      "community": 34,
+      "community": 21,
       "norm_label": "main()"
     },
     {
@@ -1294,7 +1322,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "neo4j_graphrag_job_store",
-      "community": 21,
+      "community": 22,
       "norm_label": "job_store.py"
     },
     {
@@ -1664,7 +1692,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "neo4j_graphrag_retrieval_retrievedchunk",
-      "community": 33,
+      "community": 1,
       "norm_label": "retrievedchunk"
     },
     {
@@ -1844,7 +1872,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "neo4j_graphrag_store",
-      "community": 34,
+      "community": 1,
       "norm_label": "store.py"
     },
     {
@@ -1854,7 +1882,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore",
-      "community": 38,
+      "community": 1,
       "norm_label": "graphstore"
     },
     {
@@ -1864,7 +1892,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_upsert_document",
-      "community": 38,
+      "community": 44,
       "norm_label": ".upsert_document()"
     },
     {
@@ -1874,7 +1902,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_store_py_document",
-      "community": 38,
+      "community": 44,
       "norm_label": "document"
     },
     {
@@ -1884,7 +1912,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_upsert_chunks",
-      "community": 38,
+      "community": 40,
       "norm_label": ".upsert_chunks()"
     },
     {
@@ -1894,7 +1922,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_store_py_chunk",
-      "community": 38,
+      "community": 40,
       "norm_label": "chunk"
     },
     {
@@ -1904,7 +1932,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_list_chunks",
-      "community": 38,
+      "community": 40,
       "norm_label": ".list_chunks()"
     },
     {
@@ -1914,7 +1942,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_list_entities",
-      "community": 38,
+      "community": 41,
       "norm_label": ".list_entities()"
     },
     {
@@ -1924,7 +1952,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_store_py_entity",
-      "community": 38,
+      "community": 41,
       "norm_label": "entity"
     },
     {
@@ -1934,7 +1962,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_list_relations",
-      "community": 38,
+      "community": 42,
       "norm_label": ".list_relations()"
     },
     {
@@ -1944,7 +1972,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_neo4j_graphrag_store_py_relation",
-      "community": 38,
+      "community": 42,
       "norm_label": "relation"
     },
     {
@@ -1954,7 +1982,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_count_document_chunks",
-      "community": 38,
+      "community": 1,
       "norm_label": ".count_document_chunks()"
     },
     {
@@ -1964,7 +1992,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_upsert_entities",
-      "community": 38,
+      "community": 41,
       "norm_label": ".upsert_entities()"
     },
     {
@@ -1974,7 +2002,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_upsert_relations",
-      "community": 38,
+      "community": 42,
       "norm_label": ".upsert_relations()"
     },
     {
@@ -1984,7 +2012,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_delete_document",
-      "community": 38,
+      "community": 1,
       "norm_label": ".delete_document()"
     },
     {
@@ -1994,7 +2022,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_healthcheck",
-      "community": 38,
+      "community": 1,
       "norm_label": ".healthcheck()"
     },
     {
@@ -2004,7 +2032,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_graphstore_probe",
-      "community": 38,
+      "community": 1,
       "norm_label": ".probe()"
     },
     {
@@ -2024,7 +2052,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore_upsert_chunks",
-      "community": 38,
+      "community": 40,
       "norm_label": ".upsert_chunks()"
     },
     {
@@ -2034,7 +2062,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_vectorstore_search",
-      "community": 38,
+      "community": 40,
       "norm_label": ".search()"
     },
     {
@@ -2074,7 +2102,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore",
-      "community": 34,
+      "community": 39,
       "norm_label": "inmemorygraphstore"
     },
     {
@@ -2084,7 +2112,7 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_init",
-      "community": 34,
+      "community": 39,
       "norm_label": ".__init__()"
     },
     {
@@ -2094,7 +2122,7 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_document",
-      "community": 38,
+      "community": 44,
       "norm_label": ".upsert_document()"
     },
     {
@@ -2104,7 +2132,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_chunks",
-      "community": 38,
+      "community": 40,
       "norm_label": ".upsert_chunks()"
     },
     {
@@ -2114,7 +2142,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_list_chunks",
-      "community": 38,
+      "community": 39,
       "norm_label": ".list_chunks()"
     },
     {
@@ -2124,7 +2152,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_list_entities",
-      "community": 38,
+      "community": 41,
       "norm_label": ".list_entities()"
     },
     {
@@ -2134,7 +2162,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_list_relations",
-      "community": 34,
+      "community": 42,
       "norm_label": ".list_relations()"
     },
     {
@@ -2144,7 +2172,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_count_document_chunks",
-      "community": 34,
+      "community": 39,
       "norm_label": ".count_document_chunks()"
     },
     {
@@ -2154,7 +2182,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_entities",
-      "community": 38,
+      "community": 41,
       "norm_label": ".upsert_entities()"
     },
     {
@@ -2164,7 +2192,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_upsert_relations",
-      "community": 38,
+      "community": 42,
       "norm_label": ".upsert_relations()"
     },
     {
@@ -2174,7 +2202,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_delete_document",
-      "community": 34,
+      "community": 39,
       "norm_label": ".delete_document()"
     },
     {
@@ -2184,7 +2212,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_healthcheck",
-      "community": 34,
+      "community": 39,
       "norm_label": ".healthcheck()"
     },
     {
@@ -2194,7 +2222,7 @@
       "source_location": "L106",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemorygraphstore_probe",
-      "community": 34,
+      "community": 39,
       "norm_label": ".probe()"
     },
     {
@@ -2224,7 +2252,7 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_upsert_chunks",
-      "community": 38,
+      "community": 40,
       "norm_label": ".upsert_chunks()"
     },
     {
@@ -2234,7 +2262,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_inmemoryvectorstore_search",
-      "community": 38,
+      "community": 34,
       "norm_label": ".search()"
     },
     {
@@ -2274,7 +2302,7 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_embeds_stub",
-      "community": 34,
+      "community": 21,
       "norm_label": "build_embeds_stub()"
     },
     {
@@ -2284,7 +2312,7 @@
       "source_location": "L147",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore",
-      "community": 38,
+      "community": 43,
       "norm_label": "neo4jgraphstore"
     },
     {
@@ -2294,7 +2322,7 @@
       "source_location": "L148",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_init",
-      "community": 38,
+      "community": 43,
       "norm_label": ".__init__()"
     },
     {
@@ -2304,7 +2332,7 @@
       "source_location": "L153",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_close",
-      "community": 34,
+      "community": 21,
       "norm_label": ".close()"
     },
     {
@@ -2314,7 +2342,7 @@
       "source_location": "L156",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_healthcheck",
-      "community": 38,
+      "community": 43,
       "norm_label": ".healthcheck()"
     },
     {
@@ -2324,7 +2352,7 @@
       "source_location": "L161",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_probe",
-      "community": 38,
+      "community": 44,
       "norm_label": ".probe()"
     },
     {
@@ -2334,7 +2362,7 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_document",
-      "community": 38,
+      "community": 44,
       "norm_label": ".upsert_document()"
     },
     {
@@ -2344,7 +2372,7 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_chunks",
-      "community": 38,
+      "community": 43,
       "norm_label": ".upsert_chunks()"
     },
     {
@@ -2354,7 +2382,7 @@
       "source_location": "L213",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_list_chunks",
-      "community": 38,
+      "community": 43,
       "norm_label": ".list_chunks()"
     },
     {
@@ -2364,7 +2392,7 @@
       "source_location": "L234",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_list_entities",
-      "community": 38,
+      "community": 41,
       "norm_label": ".list_entities()"
     },
     {
@@ -2374,7 +2402,7 @@
       "source_location": "L253",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_list_relations",
-      "community": 38,
+      "community": 42,
       "norm_label": ".list_relations()"
     },
     {
@@ -2384,7 +2412,7 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_count_document_chunks",
-      "community": 38,
+      "community": 43,
       "norm_label": ".count_document_chunks()"
     },
     {
@@ -2394,7 +2422,7 @@
       "source_location": "L281",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_entities",
-      "community": 38,
+      "community": 41,
       "norm_label": ".upsert_entities()"
     },
     {
@@ -2404,7 +2432,7 @@
       "source_location": "L301",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_delete_document",
-      "community": 38,
+      "community": 43,
       "norm_label": ".delete_document()"
     },
     {
@@ -2414,7 +2442,7 @@
       "source_location": "L317",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_neo4jgraphstore_upsert_relations",
-      "community": 38,
+      "community": 42,
       "norm_label": ".upsert_relations()"
     },
     {
@@ -2514,7 +2542,7 @@
       "source_location": "L460",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_graph_store_from_config",
-      "community": 34,
+      "community": 21,
       "norm_label": "build_graph_store_from_config()"
     },
     {
@@ -2524,7 +2552,7 @@
       "source_location": "L469",
       "_origin": "ast",
       "id": "neo4j_graphrag_store_build_vector_store_from_config",
-      "community": 34,
+      "community": 21,
       "norm_label": "build_vector_store_from_config()"
     },
     {
@@ -2664,7 +2692,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_doctor",
-      "community": 34,
+      "community": 21,
       "norm_label": "test_doctor.py"
     },
     {
@@ -2674,7 +2702,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "tests_test_doctor_test_doctor_command_registered",
-      "community": 34,
+      "community": 21,
       "norm_label": "test_doctor_command_registered()"
     },
     {
@@ -2694,7 +2722,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "tests_test_extract_test_extract_entities_and_relations",
-      "community": 1,
+      "community": 34,
       "norm_label": "test_extract_entities_and_relations()"
     },
     {
@@ -2714,7 +2742,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "tests_test_extract_test_signature_question_detection",
-      "community": 33,
+      "community": 1,
       "norm_label": "test_signature_question_detection()"
     },
     {
@@ -2744,7 +2772,7 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "tests_test_extract_test_structured_question_detection",
-      "community": 21,
+      "community": 1,
       "norm_label": "test_structured_question_detection()"
     },
     {
@@ -2754,7 +2782,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_healthcheck",
-      "community": 34,
+      "community": 39,
       "norm_label": "test_healthcheck.py"
     },
     {
@@ -2764,7 +2792,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "tests_test_healthcheck_test_inmemory_healthchecks",
-      "community": 34,
+      "community": 39,
       "norm_label": "test_inmemory_healthchecks()"
     },
     {
@@ -2854,7 +2882,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_probe",
-      "community": 34,
+      "community": 39,
       "norm_label": "test_probe.py"
     },
     {
@@ -2864,7 +2892,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "tests_test_probe_test_inmemory_probes",
-      "community": 34,
+      "community": 39,
       "norm_label": "test_inmemory_probes()"
     },
     {
@@ -4549,8 +4577,18 @@
       "source_file": "scripts/run_validation_corpus.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_run_validation_corpus",
-      "target": "home_crrb_codex_projects_neo4j_scripts_run_validation_corpus_sh__entry",
+      "target": "home_crrb_codex_projects_neo4j_scripts_run_validation_corpus_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/run_validation_cycle.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_run_validation_cycle",
+      "target": "home_crrb_codex_projects_neo4j_scripts_run_validation_cycle_sh__entry",
       "confidence_score": 1.0
     },
     {
@@ -12876,5 +12914,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9bfcbb9a716abd339e92f02d9e138b213d6afb59"
+  "built_at_commit": "e6297bd3a1efae230a22fb24f174988a514745e5"
 }
