@@ -150,13 +150,13 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/retrieval.py": {
-    "mtime": 1781732295.522151,
-    "ast_hash": "93ed480ddfc9c88ae2f3f040a4596681",
+    "mtime": 1781741595.1472344,
+    "ast_hash": "5e0691b11605dc2662a1c120fb2dbb52",
     "semantic_hash": ""
   },
   "tests/test_retrieval.py": {
-    "mtime": 1781730960.6397436,
-    "ast_hash": "58ae04898b259da6b3faab85a8e31d1c",
+    "mtime": 1781741600.6692452,
+    "ast_hash": "551297dbe3742f4f94419eadbfffbd81",
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/extract.py": {
@@ -265,8 +265,18 @@
     "semantic_hash": ""
   },
   "docs/plan_grafos_embeddings.md": {
-    "mtime": 1781741494.2350335,
-    "ast_hash": "e3b51f185bb907d2e66ad9a5d4de4d13",
+    "mtime": 1781741866.4524925,
+    "ast_hash": "4a8104158e98bdf4e7ef15b68830af6a",
+    "semantic_hash": ""
+  },
+  "tests/test_validation_corpus.py": {
+    "mtime": 1781741849.7805288,
+    "ast_hash": "672429481f5335c6c3d67544df01fd94",
+    "semantic_hash": ""
+  },
+  "docs/validation_corpus_oracle.txt": {
+    "mtime": 1781741836.468559,
+    "ast_hash": "11126329d55fe25da524fbc33f6b4b95",
     "semantic_hash": ""
   }
 }

@@ -80,3 +80,10 @@ Checklist para ir ejecutando de forma incremental. La idea es no desaprovechar l
 - [ ] Ajustar recuperación si aparece ruido después de la optimización.
 - [x] Ajustar recuperación si aparece ruido después de la optimización.
 - [ ] Validar en UI que `Ask` siga mostrando origen, explicación y documentos relacionados.
+
+## 10. Corpus de Validación
+
+- [x] Generar un texto fijo de validación con preguntas y respuestas esperadas.
+- [x] Verificar que ese texto ingresa a grafo y embeddings.
+- [x] Verificar respuestas estructuradas sobre firma, fecha, institución, presupuesto y plazo.
+- [x] Exponer la ejecución de este corpus como comando o job reutilizable.

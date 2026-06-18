@@ -1,0 +1,22 @@
+Fecha: 10 de Junio 2026
+Institución: HOSPITAL DE ESPECIALIDADES FUERZAS ARMADAS No1
+Nombre del Proyecto: CONTRATACION DEL SERVICIO DE ACTUALIZACION Y SOPORTE TECNICO DEL SISTEMA INFORMATICO DE GESTION HOSPITALARIA DEL HE1
+Presupuesto referencial (incluido IVA): $ 219.420,00
+Plazo ejecución: 137 días
+Plazo de Garantía: 1 año de garantía
+Elaborado por: Cbop. Marco Ortiz
+Revisado y aprobado por: Tcrn. Juan Carlos Sánchez
+
+Preguntas de validación:
+- ¿Quién firmó el documento?
+- ¿Cuál es la fecha?
+- ¿Cuál es la institución?
+- ¿Cuál es el presupuesto del proyecto?
+- ¿Cuál es el plazo de ejecución?
+
+Respuestas esperadas:
+- Firmas o roles detectados: Cbop. Marco Ortiz y Tcrn. Juan Carlos Sánchez.
+- Fecha: 10 de Junio 2026.
+- Institución: HOSPITAL DE ESPECIALIDADES FUERZAS ARMADAS No1.
+- Presupuesto: $ 219.420,00.
+- Plazo: 137 días.

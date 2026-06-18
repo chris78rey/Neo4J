@@ -260,13 +260,28 @@
     "semantic_hash": ""
   },
   "scripts/stage_graphify.sh": {
-    "mtime": 1781721432.3309016,
-    "ast_hash": "a8ddbadc6d06170c12a36a08d75fb60d",
+    "mtime": 1781742031.848213,
+    "ast_hash": "f5414ce6944f33a75f390c4300f9497a",
     "semantic_hash": ""
   },
   "docs/plan_grafos_embeddings.md": {
-    "mtime": 1781741605.674255,
-    "ast_hash": "dde2fe15c1261e87d90171fbcb01b247",
+    "mtime": 1781741977.49729,
+    "ast_hash": "a270b09da9d977c0ec45c7c6239298bd",
+    "semantic_hash": ""
+  },
+  "tests/test_validation_corpus.py": {
+    "mtime": 1781741849.7805288,
+    "ast_hash": "672429481f5335c6c3d67544df01fd94",
+    "semantic_hash": ""
+  },
+  "docs/validation_corpus_oracle.txt": {
+    "mtime": 1781741836.468559,
+    "ast_hash": "11126329d55fe25da524fbc33f6b4b95",
+    "semantic_hash": ""
+  },
+  "scripts/run_validation_corpus.sh": {
+    "mtime": 1781741970.6013007,
+    "ast_hash": "9674c92332d13bf7b91b693207c5d95a",
     "semantic_hash": ""
   }
 }
