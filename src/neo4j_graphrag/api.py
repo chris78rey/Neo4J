@@ -65,6 +65,7 @@ class AskResponse(BaseModel):
     answer: str
     document_count: int
     chunk_count: int
+    duration_ms: int = 0
     explanation: list[str] = Field(default_factory=list)
     embedding_chunk_count: int = 0
     graph_chunk_count: int = 0
@@ -113,6 +114,19 @@ def documents_metadata_by_id(payloads: list[dict[str, str]]) -> dict[str, dict[s
             continue
         metadata[document_id] = payload
     return metadata
+
+
+def filter_documents_by_path(payloads: list[dict[str, str]], path: str | None) -> list[dict[str, str]]:
+    if not path:
+        return payloads
+    normalized_path = path.strip()
+    return [
+        payload
+        for payload in payloads
+        if payload.get("source") == normalized_path
+        or payload.get("document_id") == normalized_path
+        or payload.get("title") == normalized_path
+    ]
 
 
 @app.get("/health")
@@ -284,65 +298,49 @@ def ask_question(
     latest_count: int = Query(5, ge=1, le=50),
 ) -> AskResponse:
     config = load_config()
+    started_at = datetime.now(timezone.utc)
     graph_store = build_graph_store_from_config(config)
     vector_store = build_vector_store_from_config(config)
     embedding_model_value = request.embedding_model or config.openrouter_embedding_model or config.embedding_model
     chat_model = request.model or config.openrouter_chat_model or config.llm_model
     job_store = get_job_store(config.job_store_path)
-    if not path and (is_structured_question(request.question) or is_signature_question(request.question)):
-        docs = list(job_store.list_by_prefix("doc:").values())
+    docs = list(job_store.list_by_prefix("doc:").values())
+    docs = filter_documents_by_path(docs, path)
+    if path and not docs:
+        close = getattr(graph_store, "close", None)
+        if callable(close):
+            close()
+        return AskResponse(
+            answer=f"No persisted document matched path={path!r}. Ingest the document first.",
+            document_count=len(job_store.list_by_prefix("doc:")),
+            chunk_count=0,
+            duration_ms=int((datetime.now(timezone.utc) - started_at).total_seconds() * 1000),
+            explanation=[],
+            embedding_chunk_count=0,
+            graph_chunk_count=0,
+            related_documents=[],
+            structured_answer_used=False,
+        )
+    if is_structured_question(request.question) or is_signature_question(request.question):
         structured_answer = get_structured_answer(request.question, docs)
         if structured_answer:
             return AskResponse(
                 answer=structured_answer,
                 document_count=len(docs),
                 chunk_count=0,
+                duration_ms=int((datetime.now(timezone.utc) - started_at).total_seconds() * 1000),
                 explanation=[],
                 embedding_chunk_count=0,
                 graph_chunk_count=0,
                 related_documents=[],
                 structured_answer_used=True,
             )
-    if path:
-        document = load_document(path)
-        chunks = build_chunks(document, config.chunk_size, config.chunk_overlap)
-        ingest_document(
-            document=document,
-            chunks=chunks,
-            graph_store=graph_store,
-            vector_store=vector_store,
-            model_name=embedding_model_value,
-        )
-    else:
-        documents = list(job_store.list_by_prefix("doc:").values())
-        if scope == "latest":
-            documents = sort_documents_by_ingest(documents)[-1:]
-        elif scope == "last_n":
-            documents = sort_documents_by_ingest(documents)[-latest_count:]
-        for payload in documents:
-            source = payload.get("source")
-            text = payload.get("text")
-            document_id = payload.get("document_id")
-            if not source:
-                continue
-            if text and document_id:
-                document = Document(
-                    id=document_id,
-                    path=source,
-                    title=payload.get("title", Path(source).stem),
-                    text=text,
-                )
-            else:
-                document = load_document(source)
-            chunks = build_chunks(document, config.chunk_size, config.chunk_overlap)
-            ingest_document(
-                document=document,
-                chunks=chunks,
-                graph_store=graph_store,
-                vector_store=vector_store,
-                model_name=embedding_model_value,
-            )
-    corpus = list(job_store.list_by_prefix("doc:").values())
+    documents = docs
+    if scope == "latest":
+        documents = sort_documents_by_ingest(documents)[-1:]
+    elif scope == "last_n":
+        documents = sort_documents_by_ingest(documents)[-latest_count:]
+    corpus = documents
     context = retrieve_context(
         request.question,
         graph_store,
@@ -361,6 +359,7 @@ def ask_question(
         answer=answer,
         document_count=len(job_store.list_by_prefix("doc:")),
         chunk_count=len(context.chunks),
+        duration_ms=int((datetime.now(timezone.utc) - started_at).total_seconds() * 1000),
         explanation=explanation,
         embedding_chunk_count=embedding_chunk_count,
         graph_chunk_count=graph_chunk_count,

@@ -150,13 +150,13 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/retrieval.py": {
-    "mtime": 1781732295.522151,
-    "ast_hash": "93ed480ddfc9c88ae2f3f040a4596681",
+    "mtime": 1781741595.1472344,
+    "ast_hash": "5e0691b11605dc2662a1c120fb2dbb52",
     "semantic_hash": ""
   },
   "tests/test_retrieval.py": {
-    "mtime": 1781730960.6397436,
-    "ast_hash": "58ae04898b259da6b3faab85a8e31d1c",
+    "mtime": 1781741600.6692452,
+    "ast_hash": "551297dbe3742f4f94419eadbfffbd81",
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/extract.py": {
@@ -195,13 +195,13 @@
     "semantic_hash": ""
   },
   "src/neo4j_graphrag/api.py": {
-    "mtime": 1781732225.731592,
-    "ast_hash": "c05af300806883913f159c99fb0e186d",
+    "mtime": 1781741376.7697864,
+    "ast_hash": "0e60030d546627bc21cb03c5341cb33a",
     "semantic_hash": ""
   },
   "tests/test_api.py": {
-    "mtime": 1781732118.4526267,
-    "ast_hash": "c0c8d32e4c23eb9591986620888406d2",
+    "mtime": 1781741490.1930254,
+    "ast_hash": "848ae4f594816ee19c8dbcfa3c3e7a06",
     "semantic_hash": ""
   },
   "tests/test_index.py": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "frontend/src/App.tsx": {
-    "mtime": 1781731617.7054014,
-    "ast_hash": "d11bc2c0ef39bd6641c264dc22d6ec72",
+    "mtime": 1781741384.9358041,
+    "ast_hash": "e47a9c33920e8e0fe5a4c966a4be7c7f",
     "semantic_hash": ""
   },
   "frontend/src/main.tsx": {
@@ -265,8 +265,8 @@
     "semantic_hash": ""
   },
   "docs/plan_grafos_embeddings.md": {
-    "mtime": 1781731789.8695474,
-    "ast_hash": "f8ff43822d4b90f3252e4358e4a36234",
+    "mtime": 1781741605.674255,
+    "ast_hash": "dde2fe15c1261e87d90171fbcb01b247",
     "semantic_hash": ""
   }
 }

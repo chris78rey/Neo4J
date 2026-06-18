@@ -25,7 +25,11 @@ class RetrievedContext:
 
 
 def _query_tokens(query: str) -> set[str]:
-    return {token.lower().strip(".,;:()[]{}") for token in query.split() if token.strip()}
+    return {
+        token.lower().strip(".,;:()[]{}")
+        for token in query.split()
+        if token.strip() and token.lower().strip(".,;:()[]{}") not in GENERAL_QUERY_WORDS
+    }
 
 
 def _chunk_tokens(chunk_text: str) -> set[str]:
@@ -82,6 +86,12 @@ def _question_type_weights(question: str) -> dict[str, float]:
     return {"embedding": 1.0, "graph": 0.2, "recency": 0.2, "overlap": 0.15, "penalty": 0.3}
 
 
+def _is_broad_question(query: str) -> bool:
+    lowered = query.lower()
+    broad_markers = ["qué trata", "de qué trata", "what is it", "about", "resumen", "summary"]
+    return len(_query_tokens(query)) <= 2 or any(marker in lowered for marker in broad_markers)
+
+
 def retrieve(
     query: str,
     graph_store: GraphStore,
@@ -109,6 +119,7 @@ def retrieve(
 
     scored: dict[str, RetrievedChunk] = {}
     weights = _question_type_weights(query)
+    broad_question = _is_broad_question(query)
     for chunk, score in vector_candidates:
         if document_id and chunk.document_id != document_id:
             continue
@@ -117,6 +128,8 @@ def retrieve(
         overlap = _token_overlap_score(query, chunk.text)
         graph_signal = 1.0 if relevant_document_ids and chunk.document_id in relevant_document_ids else 0.0
         irrelevance_penalty = weights["penalty"] if overlap == 0 else max(0.0, weights["penalty"] - overlap)
+        if broad_question:
+            irrelevance_penalty += 0.15
         combined_score = (
             score * weights["embedding"]
             + (weights["graph"] * graph_signal)
@@ -134,6 +147,8 @@ def retrieve(
         overlap = _token_overlap_score(query, chunk.text)
         graph_signal = 1.0 if relevant_document_ids and chunk.document_id in relevant_document_ids else 0.0
         irrelevance_penalty = weights["penalty"] * 0.7 if overlap == 0 else max(0.0, (weights["penalty"] * 0.6) - overlap)
+        if broad_question:
+            irrelevance_penalty += 0.1
         base_score = (weights["graph"] * graph_signal) + (weights["recency"] * recency_boost) + (weights["overlap"] * overlap)
         base_score -= irrelevance_penalty
         scored[chunk.id] = RetrievedChunk(chunk=chunk, score=base_score, origin="graph")
@@ -317,3 +332,29 @@ def compose_answer(question: str, retrieved: RetrievedContext, model_name: str |
         lines.append("Entidades detectadas:")
         lines.extend(entity_lines)
     return "\n".join(lines)
+GENERAL_QUERY_WORDS = {
+    "que",
+    "qué",
+    "cual",
+    "cuál",
+    "quien",
+    "quién",
+    "quienes",
+    "quiénes",
+    "es",
+    "son",
+    "de",
+    "del",
+    "la",
+    "el",
+    "los",
+    "las",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "documento",
+    "documentos",
+    "proyecto",
+    "proyectos",
+}

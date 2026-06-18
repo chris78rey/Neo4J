@@ -118,3 +118,30 @@ def test_document_detail_includes_structured_nodes():
             break
     assert payload["structured_fields"]
     assert payload["signatures"]
+
+
+def test_persisted_ask_reports_timing_and_quality():
+    response = client.post(
+        "/documents",
+        files={"file": ("doc.txt", b"Fecha: 10 de Junio 2026\nElaborado por: Cbop. Marco Ortiz\nRevisado y aprobado por: Tcrn. Juan Carlos Sanchez", "text/plain")},
+        data={"embedding_model": "text-embedding-3-large"},
+    )
+    assert response.status_code == 200
+
+    payload = response.json()
+    document_id = payload["document_id"]
+    for _ in range(20):
+        detail = client.get(f"/documents/{document_id}")
+        if detail.json().get("signatures") and detail.json().get("structured_fields"):
+            break
+
+    ask = client.post(
+        "/questions",
+        params={"scope": "all"},
+        json={"question": "¿Quién firmó el documento?", "limit": 1},
+    )
+    assert ask.status_code == 200
+    ask_payload = ask.json()
+    assert ask_payload["structured_answer_used"] is True
+    assert ask_payload["duration_ms"] >= 0
+    assert "Firmas o roles detectados" in ask_payload["answer"]

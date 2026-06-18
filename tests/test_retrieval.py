@@ -78,3 +78,19 @@ def test_compose_answer_includes_question():
 
     answer = compose_answer("What is Neo4j?", RetrievedContext(chunks=[], entities=[]))
     assert "What is Neo4j?" in answer
+
+
+def test_broad_question_does_not_surface_unrelated_noise(tmp_path):
+    path = tmp_path / "doc.txt"
+    path.write_text("Neo4j stores graph relationships.", encoding="utf-8")
+    document = load_document(str(path))
+    chunks = build_chunks(document, chunk_size=30, overlap=0)
+
+    graph_store = InMemoryGraphStore()
+    vector_store = InMemoryVectorStore()
+    ingest_document(document, chunks, graph_store, vector_store, model_name="stub")
+
+    retrieved = retrieve_context("What is it?", graph_store, vector_store)
+
+    assert retrieved.chunks
+    assert retrieved.chunks[0].score <= 1.5

@@ -166,6 +166,7 @@ function AskPage() {
     const parsed = JSON.parse(askResult) as {
       document_count?: number
       chunk_count?: number
+      duration_ms?: number
       explanation?: string[]
       embedding_chunk_count?: number
       graph_chunk_count?: number
@@ -180,6 +181,9 @@ function AskPage() {
     }
     if (parsed) {
       askSourceStats = `${parsed.embedding_chunk_count ?? 0} embeddings · ${parsed.graph_chunk_count ?? 0} graph`
+      if (typeof parsed.duration_ms === 'number') {
+        askSourceStats = `${askSourceStats} · ${parsed.duration_ms} ms`
+      }
       if (Array.isArray(parsed.related_documents)) {
         askRelatedDocuments = parsed.related_documents
       }
@@ -199,6 +203,7 @@ function AskPage() {
             <h2>Ask with context.</h2>
           </div>
           <p className="lede">La respuesta usa automáticamente todos los documentos cargados en la biblioteca.</p>
+          <p className="lede">Ask consulta lo ya persistido y no reingesta el corpus.</p>
         </div>
         <div className="active-source">
           <span>Corpus</span>

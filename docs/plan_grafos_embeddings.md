@@ -67,3 +67,16 @@ Checklist para ir ejecutando de forma incremental. La idea es no desaprovechar l
 - [x] Una pregunta sobre últimos documentos respeta recencia.
 - [x] La UI muestra claramente qué corpus se usó.
 - [x] La ingesta falla si no se persiste en ambos stores.
+
+## 9. Velocidad y Calidad de Ask
+
+- [x] Quitar el reingesto del corpus completo dentro de `Ask`.
+- [x] Hacer que `Ask` consulte solo lo ya persistido en grafo y embeddings.
+- [ ] Mantener `Ingest` como única vía de escritura de corpus.
+- [x] Mantener `Ingest` como única vía de escritura de corpus.
+- [x] Medir tiempo de respuesta de `Ask` antes y después del cambio.
+- [ ] Confirmar que la calidad no cae al retirar el reingesto.
+- [x] Confirmar que la calidad no cae al retirar el reingesto.
+- [ ] Ajustar recuperación si aparece ruido después de la optimización.
+- [x] Ajustar recuperación si aparece ruido después de la optimización.
+- [ ] Validar en UI que `Ask` siga mostrando origen, explicación y documentos relacionados.
