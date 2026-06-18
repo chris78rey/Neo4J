@@ -1,3 +1,7 @@
+import warnings
+from uuid import NAMESPACE_URL, uuid5
+
+from .embeddings import build_query_embedding
 from .models import Chunk, Document, Entity, Relation
 
 
@@ -40,7 +44,7 @@ class VectorStore:
     def upsert_chunks(self, chunks: list[Chunk], embeddings: list[list[float]]) -> None:
         raise NotImplementedError
 
-    def search(self, query: str, limit: int = 3) -> list[tuple[Chunk, float]]:
+    def search(self, query: str, limit: int = 3, embedding_model: str | None = None) -> list[tuple[Chunk, float]]:
         raise NotImplementedError
 
     def count_document_chunks(self, document_id: str) -> int:
@@ -116,7 +120,7 @@ class InMemoryVectorStore(VectorStore):
             raise ValueError("chunks and embeddings must have the same length")
         self.records.extend(zip(chunks, embeddings, strict=True))
 
-    def search(self, query: str, limit: int = 3) -> list[tuple[Chunk, float]]:
+    def search(self, query: str, limit: int = 3, embedding_model: str | None = None) -> list[tuple[Chunk, float]]:
         query_tokens = {token.lower() for token in query.split()}
         scored: list[tuple[Chunk, float]] = []
         for chunk, _embedding in self.records:
@@ -373,9 +377,10 @@ class QdrantVectorStore(VectorStore):
         for chunk, embedding in zip(chunks, embeddings, strict=True):
             points.append(
                 {
-                    "id": chunk.id,
+                    "id": str(uuid5(NAMESPACE_URL, chunk.id)),
                     "vector": embedding,
                     "payload": {
+                        "chunk_id": chunk.id,
                         "document_id": chunk.document_id,
                         "index": chunk.index,
                         "text": chunk.text,
@@ -386,21 +391,21 @@ class QdrantVectorStore(VectorStore):
             )
         self.client.upsert(collection_name=self.collection_name, points=points)
 
-    def search(self, query: str, limit: int = 3) -> list[tuple[Chunk, float]]:
-        query_embedding = [float(len(query)), float(len(query)) / 10.0, float(len(query)) / 100.0]
-        results = self.client.search(
+    def search(self, query: str, limit: int = 3, embedding_model: str | None = None) -> list[tuple[Chunk, float]]:
+        query_embedding = build_query_embedding(query, model_name=embedding_model)
+        results = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_embedding,
+            query=query_embedding,
             limit=limit,
             with_payload=True,
         )
         matches: list[tuple[Chunk, float]] = []
-        for result in results:
+        for result in results.points:
             payload = result.payload or {}
             matches.append(
                 (
                     Chunk(
-                        id=str(result.id),
+                        id=str(payload.get("chunk_id") or result.id),
                         document_id=str(payload.get("document_id", "")),
                         index=int(payload.get("index", 0)),
                         text=str(payload.get("text", "")),
@@ -457,19 +462,61 @@ class QdrantVectorStore(VectorStore):
         return f"qdrant probe collection={self.collection_name}"
 
 
+_GRAPH_STORE: GraphStore | None = None
+_VECTOR_STORE: VectorStore | None = None
+_GRAPH_STORE_STATUS = "uninitialized"
+_VECTOR_STORE_STATUS = "uninitialized"
+
+
+def get_graph_store_status() -> str:
+    return _GRAPH_STORE_STATUS
+
+
+def get_vector_store_status() -> str:
+    return _VECTOR_STORE_STATUS
+
+
 def build_graph_store_from_config(config) -> GraphStore:
+    global _GRAPH_STORE, _GRAPH_STORE_STATUS
+    if _GRAPH_STORE is not None and _GRAPH_STORE_STATUS == "connected":
+        return _GRAPH_STORE
     if config.neo4j_uri and config.neo4j_user and config.neo4j_password:
         try:
-            return Neo4jGraphStore(config.neo4j_uri, config.neo4j_user, config.neo4j_password)
-        except Exception:
-            pass
-    return InMemoryGraphStore()
+            _GRAPH_STORE = Neo4jGraphStore(config.neo4j_uri, config.neo4j_user, config.neo4j_password)
+            _GRAPH_STORE_STATUS = "connected"
+            return _GRAPH_STORE
+        except Exception as exc:
+            _GRAPH_STORE_STATUS = f"degraded:{exc.__class__.__name__}"
+            warnings.warn(
+                f"Neo4jGraphStore init failed, falling back to in-memory graph store: {exc}",
+                RuntimeWarning,
+                stacklevel=2,
+            )
+    else:
+        _GRAPH_STORE_STATUS = "in-memory"
+    if _GRAPH_STORE is None or not isinstance(_GRAPH_STORE, InMemoryGraphStore):
+        _GRAPH_STORE = InMemoryGraphStore()
+    return _GRAPH_STORE
 
 
 def build_vector_store_from_config(config) -> VectorStore:
+    global _VECTOR_STORE, _VECTOR_STORE_STATUS
+    if _VECTOR_STORE is not None and _VECTOR_STORE_STATUS == "connected":
+        return _VECTOR_STORE
     if config.qdrant_url:
         try:
-            return QdrantVectorStore(config.qdrant_url, config.qdrant_api_key, config.qdrant_collection)
-        except Exception:
-            pass
-    return InMemoryVectorStore()
+            _VECTOR_STORE = QdrantVectorStore(config.qdrant_url, config.qdrant_api_key, config.qdrant_collection)
+            _VECTOR_STORE_STATUS = "connected"
+            return _VECTOR_STORE
+        except Exception as exc:
+            _VECTOR_STORE_STATUS = f"degraded:{exc.__class__.__name__}"
+            warnings.warn(
+                f"QdrantVectorStore init failed, falling back to in-memory vector store: {exc}",
+                RuntimeWarning,
+                stacklevel=2,
+            )
+    else:
+        _VECTOR_STORE_STATUS = "in-memory"
+    if _VECTOR_STORE is None or not isinstance(_VECTOR_STORE, InMemoryVectorStore):
+        _VECTOR_STORE = InMemoryVectorStore()
+    return _VECTOR_STORE

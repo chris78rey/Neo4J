@@ -43,6 +43,33 @@ def test_retrieve_context_filters_to_document(tmp_path):
     assert "oracle" in retrieved.chunks[0].chunk.text.lower()
 
 
+def test_retrieve_context_respects_allowed_document_ids(tmp_path):
+    first_path = tmp_path / "first.txt"
+    second_path = tmp_path / "second.txt"
+    first_path.write_text("Oracle APEX modernizes hospital workflows.", encoding="utf-8")
+    second_path.write_text("Oracle APEX modernizes hospital workflows.", encoding="utf-8")
+
+    first_document = load_document(str(first_path))
+    second_document = load_document(str(second_path))
+    first_chunks = build_chunks(first_document, chunk_size=30, overlap=0)
+    second_chunks = build_chunks(second_document, chunk_size=30, overlap=0)
+
+    graph_store = InMemoryGraphStore()
+    vector_store = InMemoryVectorStore()
+    ingest_document(first_document, first_chunks, graph_store, vector_store, model_name="stub")
+    ingest_document(second_document, second_chunks, graph_store, vector_store, model_name="stub")
+
+    retrieved = retrieve_context(
+        "Oracle APEX modernizes hospital workflows",
+        graph_store,
+        vector_store,
+        allowed_document_ids={second_document.id},
+    )
+
+    assert retrieved.chunks
+    assert all(item.chunk.document_id == second_document.id for item in retrieved.chunks)
+
+
 def test_retrieve_prefers_most_recent_document_when_scores_tie(tmp_path):
     old_path = tmp_path / "old.txt"
     new_path = tmp_path / "new.txt"
@@ -73,11 +100,80 @@ def test_retrieve_prefers_most_recent_document_when_scores_tie(tmp_path):
     assert retrieved.chunks[0].chunk.document_id == new_document.id
 
 
-def test_compose_answer_includes_question():
-    from neo4j_graphrag.retrieval import RetrievedContext
+def test_compose_answer_returns_concise_fallback():
+    from neo4j_graphrag.models import Chunk, Entity
+    from neo4j_graphrag.retrieval import RetrievedChunk, RetrievedContext
 
-    answer = compose_answer("What is Neo4j?", RetrievedContext(chunks=[], entities=[]))
-    assert "What is Neo4j?" in answer
+    retrieved = RetrievedContext(
+        chunks=[
+            RetrievedChunk(
+                chunk=Chunk(
+                    id="chunk-1",
+                    document_id="doc-1",
+                    index=0,
+                    text="Oracle APEX moderniza flujos hospitalarios y centraliza reportes.",
+                    metadata={"title": "Doc 1"},
+                ),
+                score=1.25,
+            )
+        ],
+        entities=[Entity(id="entity-1", document_id="doc-1", name="Oracle APEX", entity_type="software")],
+    )
+
+    answer = compose_answer("Dame un resumen y dime el beneficio", retrieved, answer_length="short")
+
+    lines = answer.splitlines()
+    assert len(lines) == 3
+    assert lines[0].startswith("Resumen: ")
+    assert lines[1].startswith("Beneficio: ")
+    assert lines[2].startswith("Evidencia: ")
+    assert "Pregunta:" not in answer
+
+
+def test_compose_answer_returns_long_report_when_requested():
+    from neo4j_graphrag.models import Chunk, Entity
+    from neo4j_graphrag.retrieval import RetrievedChunk, RetrievedContext
+
+    retrieved = RetrievedContext(
+        chunks=[
+            RetrievedChunk(
+                chunk=Chunk(
+                    id="chunk-1",
+                    document_id="doc-1",
+                    index=0,
+                    text="Oracle APEX moderniza flujos hospitalarios y centraliza reportes operativos.",
+                    metadata={"title": "Doc 1"},
+                ),
+                score=1.25,
+            ),
+            RetrievedChunk(
+                chunk=Chunk(
+                    id="chunk-2",
+                    document_id="doc-1",
+                    index=1,
+                    text="El sistema mejora trazabilidad, seguimiento de procesos y control de acceso.",
+                    metadata={"title": "Doc 1"},
+                ),
+                score=1.10,
+            ),
+        ],
+        entities=[
+            Entity(id="entity-1", document_id="doc-1", name="Oracle APEX", entity_type="software"),
+            Entity(id="entity-2", document_id="doc-1", name="Hospital", entity_type="institution"),
+        ],
+    )
+
+    answer = compose_answer(
+        "Necesito un informe detallado de 250 palabras sobre el proyecto",
+        retrieved,
+        answer_length="long",
+        target_words=250,
+    )
+
+    assert "Resumen ejecutivo:" in answer
+    assert "Desarrollo:" in answer
+    assert "Conclusion:" in answer
+    assert len(answer.split()) >= 80
 
 
 def test_broad_question_does_not_surface_unrelated_noise(tmp_path):

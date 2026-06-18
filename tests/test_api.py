@@ -89,6 +89,44 @@ def test_signature_question_returns_roles():
     assert "Cbop. Marco Ortiz" in payload["answer"]
 
 
+def test_structured_question_respects_last_n_scope():
+    first_response = client.post(
+        "/documents",
+        files={"file": ("scope.txt", b"Fecha: 10 de Junio 2024\nElaborado por: Cbop. Marco Ortiz", "text/plain")},
+        data={"embedding_model": "text-embedding-3-large"},
+    )
+    assert first_response.status_code == 200
+    first_document_id = first_response.json()["document_id"]
+
+    second_response = client.post(
+        "/documents",
+        files={"file": ("scope.txt", b"Fecha: 10 de Junio 2026\nElaborado por: Tcrn. Juan Carlos Sanchez", "text/plain")},
+        data={"embedding_model": "text-embedding-3-large"},
+    )
+    assert second_response.status_code == 200
+    second_document_id = second_response.json()["document_id"]
+
+    for document_id in (first_document_id, second_document_id):
+        for _ in range(20):
+            detail = client.get(f"/documents/{document_id}")
+            assert detail.status_code == 200
+            payload = detail.json()
+            if payload.get("structured_fields"):
+                break
+        assert payload["structured_fields"]
+
+    response = client.post(
+        "/questions",
+        params={"scope": "last_n", "latest_count": 1, "path": "scope.txt"},
+        json={"question": "¿Cuál es la fecha del documento?", "limit": 1},
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["structured_answer_used"] is True
+    assert "2026" in payload["answer"]
+    assert "2024" not in payload["answer"]
+
+
 def test_ask_includes_explanation():
     response = client.post(
         "/questions",

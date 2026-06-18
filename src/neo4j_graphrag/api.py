@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import json
+from dataclasses import replace
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from uuid import uuid4
+from typing import Literal
 
 from fastapi import BackgroundTasks, FastAPI, File, Form, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,7 +20,7 @@ from .job_store import get_job_store
 from .ingest import build_chunks, load_document
 from .models import Document
 from .retrieval import compose_answer, explain_retrieval, get_structured_answer, retrieve_context
-from .store import build_graph_store_from_config, build_vector_store_from_config
+from .store import build_graph_store_from_config, build_vector_store_from_config, get_graph_store_status, get_vector_store_status
 
 
 app = FastAPI(title="Neo4j GraphRAG API")
@@ -50,6 +52,8 @@ class QuestionRequest(BaseModel):
     limit: int = 3
     model: str | None = None
     embedding_model: str | None = None
+    answer_length: Literal["auto", "short", "long"] = "auto"
+    target_words: int | None = Field(default=None, ge=10, le=4000)
 
 
 class IngestResponse(BaseModel):
@@ -139,11 +143,12 @@ def health() -> dict[str, str]:
         "api": "ok",
         "graph_store": "ok" if graph_store.healthcheck() else "fail",
         "vector_store": "ok" if vector_store.healthcheck() else "fail",
+        "graph_store_mode": get_graph_store_status(),
+        "vector_store_mode": get_vector_store_status(),
+        "graph_store_backend": graph_store.__class__.__name__,
+        "vector_store_backend": vector_store.__class__.__name__,
         "jobs": "ok" if isinstance(job_store.list(), dict) else "fail",
     }
-    close = getattr(graph_store, "close", None)
-    if callable(close):
-        close()
     return status
 
 
@@ -164,10 +169,15 @@ async def upload_document(
     update_job(job_store, job_id, "running", "queued")
 
     if file is not None:
+        uploaded_name = Path(file.filename or "document.txt").name
         with NamedTemporaryFile(delete=False, suffix=Path(file.filename or "document.txt").suffix or ".txt") as tmp:
             tmp.write(await file.read())
             temp_path = tmp.name
-        document = load_document(temp_path)
+        document = replace(
+            load_document(temp_path),
+            path=uploaded_name,
+            title=Path(uploaded_name).stem,
+        )
     elif path:
         document = load_document(path)
     elif text:
@@ -180,6 +190,7 @@ async def upload_document(
     else:
         raise ValueError("file, path or text is required")
     ingested_at_utc, ingested_at_ecuador = current_ingest_timestamp()
+    model_name = embedding_model or config.openrouter_embedding_model or config.embedding_model
 
     def run_ingest() -> None:
         try:
@@ -192,7 +203,7 @@ async def upload_document(
                 chunks=chunks,
                 graph_store=graph_store,
                 vector_store=vector_store,
-                model_name=embedding_model,
+                model_name=model_name,
             )
             enriched_document = result.document
             job_store.set(
@@ -221,10 +232,6 @@ async def upload_document(
             )
         except Exception as exc:
             update_job(job_store, job_id, "failed", f"{exc.__class__.__name__}: {exc}")
-        finally:
-            close = getattr(graph_store, "close", None)
-            if callable(close):
-                close()
 
     background_tasks.add_task(run_ingest)
 
@@ -277,17 +284,12 @@ def delete_document(document_id: str) -> DeleteResponse:
         return DeleteResponse(document_id=normalized_id, status="not_found")
     graph_store = build_graph_store_from_config(config)
     vector_store = build_vector_store_from_config(config)
-    try:
-        graph_store.delete_document(normalized_id)
-        delete_vector = getattr(vector_store, "delete_document", None)
-        if callable(delete_vector):
-            delete_vector(normalized_id)
-        job_store.delete(f"doc:{normalized_id}")
-        return DeleteResponse(document_id=normalized_id, status="deleted")
-    finally:
-        close = getattr(graph_store, "close", None)
-        if callable(close):
-            close()
+    graph_store.delete_document(normalized_id)
+    delete_vector = getattr(vector_store, "delete_document", None)
+    if callable(delete_vector):
+        delete_vector(normalized_id)
+    job_store.delete(f"doc:{normalized_id}")
+    return DeleteResponse(document_id=normalized_id, status="deleted")
 
 
 @app.post("/questions", response_model=AskResponse)
@@ -307,9 +309,6 @@ def ask_question(
     docs = list(job_store.list_by_prefix("doc:").values())
     docs = filter_documents_by_path(docs, path)
     if path and not docs:
-        close = getattr(graph_store, "close", None)
-        if callable(close):
-            close()
         return AskResponse(
             answer=f"No persisted document matched path={path!r}. Ingest the document first.",
             document_count=len(job_store.list_by_prefix("doc:")),
@@ -321,12 +320,17 @@ def ask_question(
             related_documents=[],
             structured_answer_used=False,
         )
+    corpus = docs
+    if scope == "latest":
+        corpus = sort_documents_by_ingest(corpus)[-1:]
+    elif scope == "last_n":
+        corpus = sort_documents_by_ingest(corpus)[-latest_count:]
     if is_structured_question(request.question) or is_signature_question(request.question):
-        structured_answer = get_structured_answer(request.question, docs)
+        structured_answer = get_structured_answer(request.question, corpus)
         if structured_answer:
             return AskResponse(
                 answer=structured_answer,
-                document_count=len(docs),
+                document_count=len(corpus),
                 chunk_count=0,
                 duration_ms=int((datetime.now(timezone.utc) - started_at).total_seconds() * 1000),
                 explanation=[],
@@ -335,26 +339,26 @@ def ask_question(
                 related_documents=[],
                 structured_answer_used=True,
             )
-    documents = docs
-    if scope == "latest":
-        documents = sort_documents_by_ingest(documents)[-1:]
-    elif scope == "last_n":
-        documents = sort_documents_by_ingest(documents)[-latest_count:]
-    corpus = documents
+    allowed_document_ids = {payload["document_id"] for payload in corpus if payload.get("document_id")}
     context = retrieve_context(
         request.question,
         graph_store,
         vector_store,
         limit=request.limit,
+        embedding_model=embedding_model_value,
+        allowed_document_ids=allowed_document_ids or None,
         document_metadata=documents_metadata_by_id(corpus),
     )
-    answer = compose_answer(request.question, context, model_name=chat_model)
+    answer = compose_answer(
+        request.question,
+        context,
+        model_name=chat_model,
+        answer_length=request.answer_length,
+        target_words=request.target_words,
+    )
     explanation = explain_retrieval(context)
     embedding_chunk_count = sum(1 for item in context.chunks if item.origin == "embeddings+graph")
     graph_chunk_count = sum(1 for item in context.chunks if item.origin == "graph")
-    close = getattr(graph_store, "close", None)
-    if callable(close):
-        close()
     return AskResponse(
         answer=answer,
         document_count=len(job_store.list_by_prefix("doc:")),
